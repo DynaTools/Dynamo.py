@@ -13,7 +13,7 @@ The `SurfacePlacingLighting` node is designed to insert light fixtures on a sele
    - **Division_Y**: The number of divisions on the Y axis.
 
 2. **Lighting Placement Criteria**:
-   ![Placement Criteria](SurfacePlacingLighting/asset/2.png)
+   ![Placement Criteria](asset/2.png)
    The script respects the lighting placement criteria, ensuring that the spacing between the fixture and the wall is \(L\) and the spacing between fixtures is \(2L\), maintaining an even distribution:
    - **X**: Distance from the wall to the first fixture.
    - **2X**: Distance between subsequent fixtures along the X axis.
@@ -21,7 +21,7 @@ The `SurfacePlacingLighting` node is designed to insert light fixtures on a sele
    - **2Y**: Distance between subsequent fixtures along the Y axis.
 
 3. **Loading and Searching for a Package in Dynamo**:
-   ![Package Search](SurfacePlacingLighting/asset/3.png)
+   ![Package Search](asset/3.png)
    This image guides you on how to load and search for a package in Dynamo. Search for `SurfacePlacingLighting` to find and install the custom node.
 
 ---
