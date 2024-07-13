@@ -43,10 +43,6 @@ The `SurfacePlacingLighting` node is designed to insert light fixtures on a sele
    ![Package Search](SurfacePlacingLighting/asset/3.png)
    This image guides you on how to load and search for a package in Dynamo. Search for `SurfacePlacingLighting` to find and install the custom node.
 
-4. **Practical Application Example**:
-   ![Practical Application](SurfacePlacingLighting/asset/4.png)
-   This image shows a practical application with 3 and 4 divisions. It illustrates how the node places light fixtures according to the defined divisions on both X and Y axes.
-
 ---
 
 Happy Designing! 🚀
