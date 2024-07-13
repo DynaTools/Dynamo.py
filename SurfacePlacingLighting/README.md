@@ -5,7 +5,7 @@ The `SurfacePlacingLighting` node is designed to insert light fixtures on a sele
 ### How to Use
 
 1. **Understanding the Custom Node and Its Inputs**:
-   ![Custom Node](SurfacePlacingLighting/asset/1.png)
+   ![Custom Node](asset/1.png)
    This image shows the custom node and its inputs, explaining the required entries:
    - **CeilingSurface**: The face of the Revit ceiling.
    - **FamilyType**: The type of luminaire.
