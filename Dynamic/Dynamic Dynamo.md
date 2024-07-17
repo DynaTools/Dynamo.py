@@ -7,9 +7,6 @@
 4. **Select Model Element**: The `Select Model Element` node allows you to choose the specific element that will have its parameters altered.
 5. **Parameter Setting**: Finally, the `Element.SetParameterByName` node updates the parameter of the selected element with the calculated value.
 
-## 💡 Why This Is Useful:
-Automating these tasks in Dynamo not only saves time but also ensures precision and consistency in complex projects. This script can be especially useful in scenarios where parameters need to be adjusted regularly or in response to dynamic conditions.
-
 ## 📈 Practical Applications:
 - Automatic adjustment of lighting parameters based on the time of day.
 - Updating angles or positions in structural elements for simulations.
