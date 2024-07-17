@@ -18,7 +18,7 @@
 - Parameters like "step" and "iterations" are defined in code blocks for flexibility.
 
 Example 
-Dynamic/Dynanomic.gif
+[Dynamic/Dynanomic.gif](https://github.com/DynaTools/Dynamo.py/blob/main/Dynamic/Dynanomic.gif)
 
 Script Dynamo
 Dynamic/script.png
