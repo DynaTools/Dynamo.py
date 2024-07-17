@@ -7,3 +7,4 @@ This repository is dedicated to providing a comprehensive set of Dynamo solution
 [SurfacePlacingLighting](https://github.com/DynaTools/ElectricalToolBox/tree/main/SurfacePlacingLighting)
 
 # Dynamic Nodes 
+https://github.com/DynaTools/Dynamo.py/blob/main/Dynamic/Dynanomic.gif
