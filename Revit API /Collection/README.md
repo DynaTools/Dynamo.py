@@ -101,7 +101,7 @@ Filtering elements in linked models.
 
 ## Filtering Elements Visible in View
 Collecting elements visible in the current view.
-![Filtering_Elements_Visible_in_View.md](Revit%20API%20/Collection/Filtering_Elements_Visible_in_View.md)
+![Filtering_Elements_Visible_in_View.md](Revit API /Collection/Filtering Elements Visible in View.md)
 
 ## Filtering of Types and Instances
 Filtering elements by types and instances.
