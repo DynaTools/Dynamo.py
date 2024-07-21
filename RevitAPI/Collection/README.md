@@ -1,3 +1,4 @@
+
 # Revit API Collectors for Dynamo
 
 In the context of Revit API for Dynamo, collectors are essential tools used to retrieve elements from a Revit document based on specific criteria. These collectors, known as `FilteredElementCollector` in the Revit API, allow users to filter elements by various parameters, such as category, type, parameter values, and more.
@@ -37,115 +38,115 @@ This README provides a comprehensive guide to understanding and using collectors
 
 ## Element Conversion Methods
 Detailed explanation of methods to convert elements.
-[Element Conversion Methods.md](RevitAPI/Collection/BoundingBox_Tolerance.md)
+[Element Conversion Methods](RevitAPI/Collection/Element_Conversion_Methods.md)
 
 ## Elements Intersecting a BoundingBox
 How to collect elements intersecting a bounding box.
-[Elements Intersecting a BoundingBox.md](RevitAPI/Collection/Elements_Intersecting_a_BoundingBox.md)
+[Elements Intersecting a BoundingBox](RevitAPI/Collection/Elements_Intersecting_a_BoundingBox.md)
 
 ## Elements within a BoundingBox
 Collecting elements within a specified bounding box.
-[Elements within a BoundingBox.md](RevitAPI/Collection/Elements_within_a_BoundingBox.md)
+[Elements within a BoundingBox](RevitAPI/Collection/Elements_within_a_BoundingBox.md)
 
 ## Exclusive Filter
 Using exclusive filters to refine collections.
-[Exclusive Filter.md](RevitAPI/Collection/Exclusive_Filter.md)
+[Exclusive Filter](RevitAPI/Collection/Exclusive_Filter.md)
 
 ## FamilySymbols Filtering
 Filtering elements based on family symbols.
-[FamilySymbols Filtering.md](RevitAPI/Collection/FamilySymbols_Filtering.md)
+[FamilySymbols Filtering](RevitAPI/Collection/FamilySymbols_Filtering.md)
 
 ## Filter by Class
 Collecting elements based on their class.
-[Filter by Class.md](RevitAPI/Collection/Filter_by_Class.md)
+[Filter by Class](RevitAPI/Collection/Filter_by_Class.md)
 
 ## Filter Items According to the Current View
 Filtering elements visible in the current view.
-[Filter Items According to the Current View.md](RevitAPI/Collection/Filter_Items_According_to_the_Current_View.md)
+[Filter Items According to the Current View](RevitAPI/Collection/Filter_Items_According_to_the_Current_View.md)
 
 ## Filter by Family Instance
 Collecting family instances.
-[Filter by Family Instance.md](RevitAPI/Collection/Filter_by_Family_Instance.md)
+[Filter by Family Instance](RevitAPI/Collection/Filter_by_Family_Instance.md)
 
 ## Filter by Level
 Filtering elements by level.
-[Filter by Level.md](RevitAPI/Collection/Filter_by_Level.md)
+[Filter by Level](RevitAPI/Collection/Filter_by_Level.md)
 
 ## Filter by Parameter Values
 Using parameter values to filter elements.
-[Filter by Parameter Values.md](RevitAPI/Collection/Filter_by_Parameter_Values.md)
+[Filter by Parameter Values](RevitAPI/Collection/Filter_by_Parameter_Values.md)
 
 ## Filter by Workset
 Collecting elements by workset.
-[Filter by Workset.md](RevitAPI/Collection/Filter_by_Workset.md)
+[Filter by Workset](RevitAPI/Collection/Filter_by_Workset.md)
 
 ## Filter Intersecting Elements
 How to filter elements that intersect.
-[Filter Intersecting Elements.md](RevitAPI/Collection/Filter_Intersecting_Elements.md)
+[Filter Intersecting Elements](RevitAPI/Collection/Filter_Intersecting_Elements.md)
 
 ## Filter Selectable Items
 Filtering selectable elements.
-[Filter Selectable Items.md](RevitAPI/Collection/Filter_Selectable_Items.md)
+[Filter Selectable Items](RevitAPI/Collection/Filter_Selectable_Items.md)
 
 ## Filter Space Tags
 Filtering space tags.
-[Filter Space Tags.md](RevitAPI/Collection/Filter_Space_Tags.md)
+[Filter Space Tags](RevitAPI/Collection/Filter_Space_Tags.md)
 
 ## Filtering by Design Options
 Using design options to filter elements.
-[Filtering by Design Options.md](RevitAPI/Collection/Filtering_by_Design_Options.md)
+[Filtering by Design Options](RevitAPI/Collection/Filtering_by_Design_Options.md)
 
 ## Filtering Elements Controlled by a Linked Model
 Filtering elements in linked models.
-[Filtering Elements Controlled by a Linked Model.md](RevitAPI/Collection/Filtering_Elements_Controlled_by_a_Linked_Model.md)
+[Filtering Elements Controlled by a Linked Model](RevitAPI/Collection/Filtering_Elements_Controlled_by_a_Linked_Model.md)
 
 ## Filtering Elements Visible in View
 Collecting elements visible in the current view.
-[Filtering Elements Visible in View.md](RevitAPI/Collection/Filtering_Elements_Visible_in_View.md)
+[Filtering Elements Visible in View](RevitAPI/Collection/Filtering_Elements_Visible_in_View.md)
 
 ## Filtering of Types and Instances
 Filtering elements by types and instances.
-[Filtering of Types and Instances.md](RevitAPI/Collection/Filtering_of_Types_and_Instances.md)
+[Filtering of Types and Instances](RevitAPI/Collection/Filtering_of_Types_and_Instances.md)
 
 ## Filtering View-Dependent Elements
 Collecting view-dependent elements.
-[Filtering View-Dependent Elements.md](RevitAPI/Collection/Filtering_View-Dependent_Elements.md)
+[Filtering View-Dependent Elements](RevitAPI/Collection/Filtering_View-Dependent_Elements.md)
 
 ## Insertion Point within a BoundingBox
 Finding insertion points within a bounding box.
-[Insertion Point within a BoundingBox.md](RevitAPI/Collection/Insertion_Point_within_a_BoundingBox.md)
+[Insertion Point within a BoundingBox](RevitAPI/Collection/Insertion_Point_within_a_BoundingBox.md)
 
 ## Logic Filters
 Using logical operations for filtering.
-[Logic Filters.md](RevitAPI/Collection/Logic_Filters.md)
+[Logic Filters](RevitAPI/Collection/Logic_Filters.md)
 
 ## MultiClass Filtering
 Filtering elements by multiple classes.
-[MultiClass Filtering.md](RevitAPI/Collection/MultiClass_Filtering.md)
+[MultiClass Filtering](RevitAPI/Collection/MultiClass_Filtering.md)
 
 ## Other FilteredElementCollector Methods
 Additional methods for element collection.
-[Other FilteredElementCollector Methods.md](RevitAPI/Collection/Other_FilteredElementCollector_Methods.md)
+[Other FilteredElementCollector Methods](RevitAPI/Collection/Other_FilteredElementCollector_Methods.md)
 
 ## Quick Filter Concatenation
 Concatenating multiple filters quickly.
-[Quick Filter Concatenation.md](RevitAPI/Collection/Quick_Filter_Concatenation.md)
+[Quick Filter Concatenation](RevitAPI/Collection/Quick_Filter_Concatenation.md)
 
 ## Slow Filters
 Using slow filters for element collection.
-[Slow Filters.md](RevitAPI/Collection/Slow_Filters.md)
+[Slow Filters](RevitAPI/Collection/Slow_Filters.md)
 
 ## Structural Element Filtering
 Filtering structural elements.
-[Structural Element Filtering.md](RevitAPI/Collection/Structural_Element_Filtering.md)
+[Structural Element Filtering](RevitAPI/Collection/Structural_Element_Filtering.md)
 
 ## BoundingBox Tolerance
 Using bounding box tolerance in filters.
-[BoundingBox Tolerance.md](RevitAPI/Collection/BoundingBox_Tolerance.md)
+[BoundingBox Tolerance](RevitAPI/Collection/BoundingBox_Tolerance.md)
 
 ## Collecting Worksets
 Collecting elements by worksets.
-[Collecting Worksets.md](RevitAPI/Collection/Collecting_Worksets.md)
+[Collecting Worksets](RevitAPI/Collection/Collecting_Worksets.md)
 
 ---
 
