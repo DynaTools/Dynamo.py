@@ -30,7 +30,7 @@ The `ElementLevelFilter` constructor takes the ID of the level as an argument. T
 ### Combining Filters
 For more refined filtering, the `ElementLevelFilter` can be combined with other filters, such as `CategoryFilter`, `BoundingBoxIntersectsFilter`, etc.
 
-## Project: Exercises for Students
+## Now It's Your Turn
 
 ### Exercise 1: Filter Elements by Level
 #### Objective
@@ -83,5 +83,4 @@ For a given level and the 'walls' category, the following elements were found:
 - Element Id: 23456
 - Element Id: 78901
 
-## Dynamo Version
-The examples and explanations provided are based on the latest version of Dynamo, which at the time of writing is Dynamo Core 2.13.
+
