@@ -1,29 +1,32 @@
-## SurfacePlacingLighting Node
+# SurfacePlacingLighting Node
 
-The `SurfacePlacingLighting` node is designed to insert light fixtures on a selected face of a Revit ceiling according to general lighting spacing criteria. The spacing criteria ensure an even distribution of light fixtures, maintaining a specified distance \(L\) between the fixture and the wall, and \(2L\) between fixtures. The user must select the necessary divisions on each axis to achieve the desired configuration.
+O node SurfacePlacingLighting é projetado para inserir luminárias em uma face selecionada de um teto no Revit, de acordo com os critérios gerais de espaçamento de iluminação. Os critérios de espaçamento garantem uma distribuição uniforme das luminárias, mantendo uma distância especificada \(L\) entre a luminária e a parede, e \(2L\) entre as luminárias. O usuário deve selecionar as divisões necessárias em cada eixo para alcançar a configuração desejada.
 
-### How to Use
+## Como Usar
 
-1. **Understanding the Custom Node and Its Inputs**:
-   ![Custom Node](LAB /Surface Lighting/assets/1.png)  
-   This image shows the custom node and its inputs, explaining the required entries:
-   - **CeilingSurface**: The face of the Revit ceiling.
-   - **FamilyType**: The type of luminaire.
-   - **Division_X**: The number of divisions on the X axis.
-   - **Division_Y**: The number of divisions on the Y axis.
+1. **Entendendo o Node Personalizado e Seus Inputs**:
+   
+   ![Custom Node](assets/1.png)  
+   Esta imagem mostra o node personalizado e seus inputs, explicando as entradas necessárias:
+   - **CeilingSurface**: A face do teto no Revit.
+   - **FamilyType**: O tipo de luminária.
+   - **Division_X**: O número de divisões no eixo X.
+   - **Division_Y**: O número de divisões no eixo Y.
 
-2. **Lighting Placement Criteria**:
-   ![Placement Criteria](LAB /Surface Lighting/assets/2.png)
-   The script respects the lighting placement criteria, ensuring that the spacing between the fixture and the wall is \(L\) and the spacing between fixtures is \(2L\), maintaining an even distribution:
-   - **X**: Distance from the wall to the first fixture.
-   - **2X**: Distance between subsequent fixtures along the X axis.
-   - **Y**: Distance from the wall to the first fixture along the Y axis.
-   - **2Y**: Distance between subsequent fixtures along the Y axis.
+2. **Critérios de Posicionamento das Luminárias**:
+   
+   ![Placement Criteria](assets/2.png)  
+   O script respeita os critérios de posicionamento das luminárias, garantindo que o espaçamento entre a luminária e a parede seja \(L\) e o espaçamento entre as luminárias seja \(2L\), mantendo uma distribuição uniforme:
+   - **X**: Distância da parede até a primeira luminária.
+   - **2X**: Distância entre as luminárias subsequentes ao longo do eixo X.
+   - **Y**: Distância da parede até a primeira luminária ao longo do eixo Y.
+   - **2Y**: Distância entre as luminárias subsequentes ao longo do eixo Y.
 
-3. **Loading and Searching for a Package in Dynamo**:
-   ![Package Search](LAB /Surface Lighting/assets/3.png)
-   This image guides you on how to load and search for a package in Dynamo. Search for `SurfacePlacingLighting` to find and install the custom node.
+3. **Carregando e Pesquisando um Pacote no Dynamo**:
+   
+   ![Package Search](assets/3.png)  
+   Esta imagem orienta sobre como carregar e pesquisar um pacote no Dynamo. Pesquise por SurfacePlacingLighting para encontrar e instalar o node personalizado.
 
 ---
 
-Happy Designing! �
+Happy Designing! 🎨
