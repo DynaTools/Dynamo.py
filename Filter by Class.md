@@ -1,40 +1,49 @@
-# Filter Elements by Class
+REVIT API - COLLECT ELEMENTS
+* Filter by Class
+The OfClass shortcut applies a class filter (ElementFilterClass) to the FilteredElementCollector and allows to search for elements of a class matching the specified class.
 
-## Summary
+python
+Copy code
+ins = FilteredElementCollector(doc).OfClass(FamilyInstance)
+The main Revit API classes are:
 
-The Revit API allows filtering and collecting specific elements from a document using the `FilteredElementCollector` class. By using the `OfClass()` method, you can specify the class of the elements you want to collect, such as `FamilyInstance`, `WallType`, and others. Additionally, you can apply inverted filters and combine different types of filters to refine the selection of elements. Efficient use of these methods enables the automation of tasks and precise data extraction from Revit models.
+AssemblyInstance	GridType	ParameterElement	TilePattern
+AssemblyType	Group	Phase	View3D
+BeamSystemType	ImageType	ProjectInfo	ViewFamilyType
+BeamSystemType	ImageView	ProjectLocation	ViewPlan
+CADLinkType	IndependentTag	PropertyLine	ViewPlanType
+Ceiling	InsertableObject	Revision	ViewSchedule
+CeilingAndFloor	Level	RevisionCloud	ViewSection
+CeilingType	LevelType	RevitLinkInstance	ViewSheet
+CurtainSystem	MEPCurve	RoofType	Viewport
+Dimension	MEPCurveType	SharedParameterElement	WallFoundation
+DirectShape	MEPSytem	SlabEdge	WallFoundationType
+Family	MEPSytemType	SlabEdgeType	WallSweep
+FamilyInstance	Material	SpatialElement	WallType
+FilledRegion	ModelText	Sweep	WallType
+Floor	ModelTextType	SweepType	WallType
+FloorType	MullionType	TableView	
+Grid	NestedFamilyTypeReference	TextElement	
+PanelType	TextElementType	
+Note: The vast majority of existing classes in the Revit API will be searchable using this method, as long as the library where they are hosted is imported.
 
-## Example
+Example: To search for the PipeSegment the library "Plumbing" must be imported.
 
-```python
-# Importing the necessary libraries
-from Autodesk.Revit.DB import FilteredElementCollector, ElementClassFilter, FamilyInstance, Material
+python
+Copy code
+from Autodesk.Revit.DB.Plumbing import *
+An equally valid way to filter is to construct the filter instance without using the shortcut. This will give the flexibility to invert the filter by passing a boolean value as a second argument.
 
-# Creating an element collector from the active document
-doc = __revit__.ActiveUIDocument.Document
+Whenever the constructor is used, the WherePasses() method must be used in order to apply the instance of the filter to the collector:
 
-# Collecting all family instances in the document
-family_instances = FilteredElementCollector(doc).OfClass(FamilyInstance).ToElements()
+python
+Copy code
+Filter = ElementClassFilter(Material)
+allMat = FilteredElementCollector(doc).WherePasses(Filter).ToElements()
+The inverse filter will return everything that is not equal to the filter argument.
 
-# Example of a filter to collect elements of type Material
-filter_material = ElementClassFilter(Material)
-materials = FilteredElementCollector(doc).WherePasses(filter_material).ToElements()
-
-# Example of an inverted filter to collect all elements that are not of type Material
-invert_filter_material = ElementClassFilter(Material, True)
-non_materials = FilteredElementCollector(doc).WherePasses(invert_filter_material).ToElements()
-
-# Displaying the number of elements found
-print("Number of family instances:", len(family_instances))
-print("Number of materials:", len(materials))
-print("Number of elements that are not materials:", len(non_materials))
-
-"""
-Create a Dynamo script that filters and collects all windows (Window) from a Revit model, and then applies an additional filter to identify which of these windows are in external walls. To achieve this, you will need to use class filters and parameter-based filters for the windows and walls.
-
-Suggested Steps:
-1. Use FilteredElementCollector to collect all windows.
-2. Apply a filter to check the location parameter of the windows.
-3. Combine the results to get only the windows located in external walls.
-4. Display or export the results as needed.
-"""
+python
+Copy code
+InvertFilter = ElementClassFilter(Material, True)
+allMat = FilteredElementCollector(doc).WherePasses(InvertFilter).ToElements()
+Note: If you do not need to invert the filter, it will be quicker and more elegant to use the shortcut, as discussed at the beginning of this section.
