@@ -101,7 +101,7 @@ Filtering elements in linked models.
 
 ## Filtering Elements Visible in View
 Collecting elements visible in the current view.
-(https://github.com/DynaTools/Dynamo.py/blob/main/Revit%20API%20/Collection/Filtering%20Elements%20Visible%20in%20View.md))
+![Filtering Elements Visible in View](https://github.com/DynaTools/Dynamo.py/blob/main/Revit%20API%20/Collection/Filtering%20Elements%20Visible%20in%20View.md))
 
 ## Filtering of Types and Instances
 Filtering elements by types and instances.
