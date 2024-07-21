@@ -11,8 +11,8 @@ Two shortcuts, when applied to `FilteredElementCollector`, allow differentiation
 ```python
 Floors = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Floors).WhereElementIsNotElementType().ToElements()
 
-'''py
+
 Floor Types Example
 FloorType = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Floors).WhereElementIsElementType().ToElements()
 OUT = Floors, FloorType
-'''py
+
