@@ -1,4 +1,3 @@
-```markdown
 # Revit API - Collect Elements
 
 ## Overview
