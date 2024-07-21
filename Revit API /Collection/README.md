@@ -37,7 +37,7 @@ This README provides a comprehensive guide to understanding and using collectors
 
 ## Element Conversion Methods
 Detailed explanation of methods to convert elements.
-[Element Conversion Methods.md](RevitAPI/Collection/Element_Conversion_Methods.md)
+[Element Conversion Methods.md](RevitAPI/Collection/BoundingBox_Tolerance.md)
 
 ## Elements Intersecting a BoundingBox
 How to collect elements intersecting a bounding box.
