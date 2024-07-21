@@ -1,8 +1,3 @@
-# Revit API - Collect Elements
-
-## Overview
-This guide provides methods to filter and collect elements in Revit using the Revit API. The primary focus is on filtering by class.
-
 ## Filter by Class
 
 ### Using `OfClass` Shortcut
