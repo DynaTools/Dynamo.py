@@ -17,9 +17,3 @@
 - The second Python script is used for specific calculation logic.
 - Parameters like "step" and "iterations" are defined in code blocks for flexibility.
 
-Example 
-[Dynamic/Dynanomic.gif](https://github.com/DynaTools/Dynamo.py/blob/main/Dynamic/Dynanomic.gif)
-
-Script Dynamo
-[Dynamic/script.png](https://github.com/DynaTools/Dynamo.py/blob/main/Dynamic/script.png)
-
