@@ -109,7 +109,7 @@ Filtering elements by types and instances.
 
 ## Filtering View-Dependent Elements
 Collecting view-dependent elements.
-[Filtering View-Dependent Elements.md](Revit API/Collection/Filtering_View-Dependent_Elements.md)
+[Filtering View-Dependent Elements.md](RevitAPI/Collection/Filtering_View-Dependent_Elements.md)
 
 ## Insertion Point within a BoundingBox
 Finding insertion points within a bounding box.
