@@ -185,12 +185,23 @@ O curso "Modelagem Paramétrica com Python e Revit" é uma jornada abrangente qu
 - Instalação do Processing.py
 - Primeiro programa em Processing.py
 - **Exercício:** Script simples que desenha um círculo na tela
+- **Exemplo:**
+```python
+def setup():
+    size(800, 600)  # Tamanho da janela
+    background(255)  # Cor de fundo branca
 
+def draw():
+    # Desenhar um círculo no centro da tela
+    fill(150, 0, 150)  # Cor de preenchimento roxa
+    ellipse(width / 2, height / 2, 100, 100)  # Círculo com diâmetro 100
+```
 #### Aula 2: Variáveis e Tipos de Dados
 - Tipos de dados em Python
 - Declaração e uso de variáveis no Processing.py
 - Operações básicas com variáveis
 - **Exercício:** Desenhar formas geométricas utilizando variáveis
+- 
 
 #### Aula 3: Estruturas de Controle
 - Condicionais (if, else, elif)
