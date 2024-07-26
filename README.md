@@ -271,82 +271,194 @@ Recursos:
 - https://github.com/DynaTools/Dynamo.py/tree/main/Library
 - https://dynamopythonprimer.gitbook.io/dynamo-python-primer
 
-### Programação do Módulo 02
-#### Aula 1: Introdução à API do Revit e Dynamo
-- Conceitos básicos da API do Revit e do ambiente Dynamo
-- Configuração do ambiente de desenvolvimento
-- Exercício: Primeiro script simples utilizando a API do Revit
+# Grade do Curso: Modelagem Paramétrica com Python e Revit
 
-#### Aula 2: Variáveis e Tipos de Dados em Python
-- Tipos de dados primitivos em Python
-- Declaração e uso de variáveis no contexto da API do Revit
+Este curso propõe uma jornada entre ferramentas de programação visual, textual e de modelagem, incluindo Dynamo e Revit.
+
+Começamos com programação em Python em um ambiente leve que permite visualização imediata dos resultados. Essa primeira parte utiliza Processing.py.
+
+## Módulo 01 - Introdução à Programação Visual com Processing.py
+**Duração:** 15 horas  
+**Objetivo:** Introduzir conceitos de programação, variáveis, listas e orientação a objetos.  
+**Projeto:** Os alunos apresentarão um projeto ao final do curso.  
+**Linguagem:** Python  
+**Recursos:** 
+- [GitHub - Processing](https://github.com/DynaTools/Dynamo.py/tree/main/Processing)
+- [Material de Aulas - Processing Python](https://abav.lugaralgum.com/material-aulas/Processing-Python/)
+- [Referência - Processing Python](https://py.processing.org/reference/)
+
+### Estrutura do Módulo 01
+#### Aula 1: Primeiros Passos com Processing.py
+- Noções básicas de programação visual
+- Instalação do Processing.py
+- Primeiro programa em Processing.py
+- **Exercício:** Script simples que desenha um círculo na tela
+
+#### Aula 2: Variáveis e Tipos de Dados
+- Tipos de dados em Python
+- Declaração e uso de variáveis no Processing.py
 - Operações básicas com variáveis
-- Exercício: Script que manipula diferentes tipos de dados dentro do Dynamo
+- **Exercício:** Desenhar formas geométricas utilizando variáveis
 
 #### Aula 3: Estruturas de Controle
 - Condicionais (if, else, elif)
 - Laços de repetição (for, while)
-- Uso de estruturas de controle em scripts da API do Revit
-- Exercício: Script que usa estruturas de controle para manipular elementos do Revit
+- Utilização de estruturas de controle para manipular desenhos
+- **Exercício:** Desenhar formas geométricas condicionais e repetitivas
 
-#### Aula 4: Funções e Métodos
-- Definição e uso de funções e métodos
-- Funções integradas e personalizadas na API do Revit
-- Exercício: Criação de funções para modularizar scripts da API do Revit
+#### Aula 4: Funções
+- Definição e uso de funções
+- Funções integradas no Processing.py
+- Criação de funções personalizadas
+- **Exercício:** Uso de funções para modularizar o desenho de formas complexas
 
-#### Aula 5: Introdução à Orientação a Objetos
+#### Aula 5: Listas e Estruturas de Dados
+- Introdução às listas em Python
+- Manipulação de listas para criar padrões visuais
+- **Exercício:** Desenhar uma série de formas utilizando listas para definir posições e tamanhos
+
+#### Aula 6: Introdução à Orientação a Objetos
 - Conceitos básicos de orientação a objetos (OO)
 - Criação de classes e objetos em Python
-- Exercício: Criação de uma classe simples para representar elementos do Revit
+- **Exercício:** Criação de uma classe simples para desenhar formas geométricas
 
-#### Aula 6: Atributos e Métodos
-- Atributos e métodos em classes
+#### Aula 7: Métodos e Atributos
+- Métodos e atributos em classes
 - Diferença entre métodos de instância e métodos de classe
-- Exercício: Expansão da classe de elementos do Revit para incluir métodos específicos
+- **Exercício:** Expansão da classe de formas geométricas para incluir métodos de desenho
 
-#### Aula 7: Herança e Polimorfismo
+#### Aula 8: Herança e Polimorfismo
 - Conceitos de herança em OO
 - Criação de subclasses
 - Uso de polimorfismo para métodos
-- Exercício: Criação de uma hierarquia de classes para diferentes tipos de elementos do Revit
+- **Exercício:** Criação de uma hierarquia de classes para diferentes formas geométricas
 
-#### Aula 8: Manipulação de Elementos do Revit com Objetos
-- Criação e manipulação de objetos que representam elementos do Revit
-- Exercício: Script que cria e manipula múltiplos objetos representando diferentes tipos de elementos do Revit
+#### Aula 9: Interatividade com Objetos
+- Entrada de dados pelo usuário para manipular objetos
+- Uso do mouse e teclado para interação com objetos
+- **Exercício:** Script interativo que responde aos movimentos do mouse
 
-#### Aula 9: Interatividade e Entrada de Dados
-- Entrada de dados pelo usuário para manipular objetos do Revit
-- Exercício: Criação de um script interativo que permite ao usuário selecionar e modificar elementos do Revit
+#### Aula 10: Animação de Objetos
+- Conceitos de animação em Processing.py aplicados a objetos
+- Uso de laços e variáveis para criar animações de objetos
+- **Exercício:** Animação de formas geométricas
 
-#### Aula 10: Animação e Visualização de Dados
-- Conceitos de animação aplicados a elementos do Revit
-- Uso de laços e variáveis para criar animações simples
-- Exercício: Criação de um script que anima a visualização de dados no Revit
-
-#### Aula 11: Gerenciamento de Múltiplos Objetos e Dados
-- Criação e gerenciamento de múltiplos objetos e dados no Revit
-- Uso de listas e dicionários para armazenar e manipular dados
-- Exercício: Script que gerencia e manipula uma grande quantidade de dados do Revit
+#### Aula 11: Gerenciamento de Múltiplos Objetos
+- Criação e gerenciamento de múltiplos objetos em uma cena
+- Uso de listas para armazenar e manipular objetos
+- **Exercício:** Criação de uma cena com múltiplos objetos interagindo
 
 #### Aula 12: Projeto Final - Parte 1
 - Discussão e planejamento do projeto final
 - Início da implementação do projeto com orientação a objetos
-- Exercício: Desenvolvimento inicial do projeto
+- **Exercício:** Desenvolvimento inicial do projeto
 
 #### Aula 13: Projeto Final - Parte 2
 - Continuação da implementação do projeto
 - Aplicação de conceitos aprendidos (interatividade, animação, etc.)
-- Exercício: Desenvolvimento intermediário do projeto
+- **Exercício:** Desenvolvimento intermediário do projeto
 
 #### Aula 14: Projeto Final - Parte 3
 - Finalização do projeto
 - Testes e ajustes finais
-- Exercício: Conclusão do projeto e preparação para a apresentação
+- **Exercício:** Conclusão do projeto e preparação para a apresentação
 
 #### Aula 15: Apresentação dos Projetos
 - Apresentação dos projetos pelos alunos
 - Feedback e discussão sobre os projetos apresentados
 
+## Módulo 02 - Orientação a Objetos com Revit API e Python
+**Duração:** 30 horas  
+**Objetivo:** Ensinar orientação a objetos com a API do Revit dentro do ambiente Dynamo.  
+**Projeto:** O aluno escolhe um problema para ser resolvido e, com o apoio da turma e do curso, apresenta a solução ao final.  
+**Linguagem:** Design Script, Python  
+**Recursos:** 
+- [GitHub - Revit API Collection](https://github.com/DynaTools/Dynamo.py/tree/main/RevitAPI/Collection)
+- [GitHub - Library](https://github.com/DynaTools/Dynamo.py/tree/main/Library)
+- [Dynamo Python Primer](https://dynamopythonprimer.gitbook.io/dynamo-python-primer)
+
+### Estrutura do Módulo 02
+
+#### Aula 1: Introdução ao Python no Dynamo
+- Configuração do ambiente de desenvolvimento
+- Primeiros passos com scripts em Python no Dynamo
+- **Exercício:** Script simples utilizando Python no Dynamo
+
+#### Aula 2: Compreendendo o Dynamo
+- Visão geral do Dynamo e sua integração com o Revit
+- Conceitos de geometria e dados no Dynamo
+- **Exercício:** Criação de um script que gera geometria básica no Dynamo
+
+#### Aula 3: Iniciando com a API do Revit
+- Primeiros passos com a API do Revit
+- Configuração inicial e comandos básicos
+- **Exercício:** Script para manipular elementos do Revit
+
+#### Aula 4: Tópicos Específicos do Revit
+##### 4.1 Introdução à API do Revit
+- Conceitos básicos e estrutura da API
+- **Exercício:** Acesso a informações básicas de um documento Revit
+
+##### 4.2 Como Ler a Documentação da API do Revit
+- Navegação e interpretação da documentação da API
+- **Exercício:** Pesquisa na documentação para resolver um problema específico
+
+##### 4.3 Doc, UIDoc, App, UIApp
+- Diferenças e usos de Doc, UIDoc, App e UIApp
+- **Exercício:** Uso desses objetos para acessar e modificar dados no Revit
+
+##### 4.4 Desembrulhando Elementos do Revit
+- Conceito de unwrapping no Dynamo
+- **Exercício:** Desembrulhar elementos e modificar suas propriedades
+
+##### 4.5 O FilteredElementCollector
+- Seleção de elementos no Revit usando FilteredElementCollector
+- **Exercício:** Script que seleciona e manipula um conjunto específico de elementos
+
+##### 4.6 Métodos de Conversão de Geometria
+- Conversão de geometria entre Dynamo e Revit
+- **Exercício:** Converter geometria do Dynamo para elementos do Revit
+
+##### 4.7 Trabalhando com Parâmetros
+- Tipos de parâmetros no Revit e como acessá-los
+- **Exercício:** Modificação de parâmetros de elementos selecionados
+
+##### 4.8 Trabalhando com Transações
+- Conceito de transações no Revit
+- **Exercício:** Script que realiza múltiplas operações dentro de uma transação
+
+##### 4.9 Abrindo e Fechando Arquivos Externos
+- Manipulação de arquivos externos via API
+- **Exercício:** Abrir, modificar e salvar arquivos Revit
+
+##### 4.10 Seleção via Interface de Usuário
+- Criação de interfaces para seleção de elementos
+- **Exercício:** Script que cria uma interface para seleção de elementos no Revit
+
+##### 4.11 Trabalhando com Unidades
+- Manipulação e conversão de unidades no Revit
+- **Exercício:** Ajustar unidades de elementos para um padrão específico
+
+##### 4.12 Categorias Integradas
+- Uso de categorias integradas no Revit
+- **Exercício:** Seleção e modificação de elementos por categoria
+
+##### 4.13 Manipulação de Famílias
+- Criação e modificação de famílias no Revit
+- **Exercício:** Script que cria e modifica famílias paramétricas
+
+##### 4.14 Diálogos de Tarefas para Feedback
+- Criação e uso de diálogos de tarefas para interação com o usuário
+- **Exercício:** Script que utiliza diálogos de tarefas para interagir com o usuário
+
+#### Aula 5: Glossário
+- Revisão de termos e conceitos chave do curso
+- **Exercício:** Criação de um glossário personalizado pelos alunos
+
+#### Aula 6: Conclusão e Próximos Passos
+- Reflexão sobre o curso e próximos passos
+- **Exercício:** Planejamento de projetos futuros utilizando Dynamo e API do Revit
+"""
 
 
 
