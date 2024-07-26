@@ -23,41 +23,11 @@ Algoritmos são o conjunto de regras, operações e procedimentos definidos, ord
 
 Os cursos existentes que se propõem a ensinar o uso das interfaces de programação visual como Grasshopper e Dynamo são excelentes meios de introduzir o projetista nas ferramentas de design paramétrico. Encontramos diversos cursos rápidos destas ferramentas disponíveis nas plataformas Linkedin Learning e Udemy, por exemplo. Esses cursos possuem conteúdos que ensinam o projetista a utilizar a interface dos programas de linguagem visual. Observamos que o conteúdo é direcionado a ensinar através de exemplos práticos que complementam funcionalidades que não estão presentes nos programas BIM por padrão (JANSSEN, 2015).
 
-Como ilustra a tabela 01, os cursos têm focado em ensinar os alunos a sintaxe da linguagem, ou seja, as regras que determinam quais combinações de nós geram funções úteis, como os construtores operam com os tipos de dados, quais são os símbolos e pontuações aceitas para declarar variáveis e listas de dados, etc. Desta maneira, os cursos têm se configurado como um conjunto de rotinas prontas que podem ser ensinadas para que os alunos comecem a entender o funcionamento da interface através destes exemplos.
+Como ilustra a figura abaixo, os cursos têm focado em ensinar os alunos a sintaxe da linguagem, ou seja, as regras que determinam quais combinações de nós geram funções úteis, como os construtores operam com os tipos de dados, quais são os símbolos e pontuações aceitas para declarar variáveis e listas de dados, etc. Desta maneira, os cursos têm se configurado como um conjunto de rotinas prontas que podem ser ensinadas para que os alunos comecem a entender o funcionamento da interface através destes exemplos.
 
 De maneira prática, isto torna o conteúdo do curso objetivo e funcional. Entretanto, deixar o aluno focado na ferramenta ou no aprendizado da interface, não garante que entenda um arcabouço teórico-prático que fornece autonomia para que pense nos fluxos de projeto.
 
-| Tabela 01 - Grade do curso de Dynamo mais popular da plataforma LinkedIn. |
-| --- | --- |
-| **Dynamo 2.x Essential Training** | |
-| **Introdução** | |
-| O que é Dynamo? | |
-| Navegando na UI e biblioteca de nós | |
-| Inserindo e conectando nós | |
-| **Trabalhando com Dados** | |
-| Criando pontos | |
-| Criando linhas, poli curvas e polígonos | |
-| Criando arcos e curvas NURBS | |
-| Usando vetores para transformar geometria | |
-| Rotacionando e espelhando com vetores e planos | |
-| Criando superfícies e sólidos | |
-| Criando sólidos com loft | |
-| Modificando sólidos | |
-| Analisando sólidos | |
-| Analisando curvas | |
-| Analisando superfícies | |
-| Exportando geometria como SAT ou STL | |
-| **Revit** | |
-| Acessando geometria do Revit e dados | |
-| Conectando Dynamo SAT com o Revit | |
-| Inserindo famílias | |
-| Inserindo famílias adaptativas | |
-| Inserindo componentes adaptativos | |
-| Ajustando valores no Revit | |
-| Criando vistas e planilhas | |
-| **Conclusão** | |
-| Próximos passos | |
-| **Fonte**: Elaborado pelo autor baseado em Linkedin (2021). | |
+![image](https://github.com/user-attachments/assets/a906a0ce-2eae-4cda-8d2f-45f0fbda94d8)
 
 
 O curso pode ser rico em exemplos, mas sem uma estrutura lógica, o aluno fica restrito às possibilidades que foram apresentadas em aula. Aprender sobre a estrutura das linguagens de programação para além de uma linguagem específica como Dynamo ou Grasshopper pode ajudar o projetista a entender qual pode ser a melhor estratégia de projeto computacional para resolver um determinado problema. Isso também garante que o conhecimento aprendido no percurso possa ser reaproveitado a longo prazo, pois VPLs específicas podem mudar ou se tornar obsoletas.
@@ -80,7 +50,7 @@ Em *Types of Parametric Modelling*, os autores determinam um Modelo Geral Param�
 O GPM é descrito utilizando um conceito matemático comum na ciência da computação, o grafo acíclico dirigido ou directed acyclic graph (DAG) (figura 01). DAG é um gráfico contendo grafos dirigidos sem qualquer tipo de ciclo (DIRECTED, 2021). Não é possível ir e voltar diversas vezes pelo mesmo nó, ou seja, fazer recursão de dados.
 
 ### Figura 01 - Grafo Acíclico Dirigido
-![Grafo Acíclico Dirigido](assets/Grafo_Acíclico_Dirigido.png)
+![Grafo Acíclico Dirigido](Grafo_Acíclico_Dirigido.png)
 **Fonte**: Extraído de Wikipédia¹ 
 
 Considerando que arquitetos, engenheiros e projetistas não têm educação formal em programação, mas estão sendo introduzidos nela através das linguagens de programação visual (VPL), o conceito de iteração de dados pode se tornar muito abstrato e atrapalhar o envolvimento do aluno com o assunto. Desta maneira, para atingir o entendimento do processo com exemplos mais acessíveis, o conceito pode ser simplificado se criarmos um paralelo com um moedor de carne:
