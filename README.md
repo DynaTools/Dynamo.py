@@ -27,8 +27,8 @@ Como ilustra a figura abaixo, os cursos têm focado em ensinar os alunos a sinta
 
 De maneira prática, isto torna o conteúdo do curso objetivo e funcional. Entretanto, deixar o aluno focado na ferramenta ou no aprendizado da interface, não garante que entenda um arcabouço teórico-prático que fornece autonomia para que pense nos fluxos de projeto.
 
+### Figura 01 - Curso do Linkedin Learning - Dynamo Essential Training
 ![image](https://github.com/user-attachments/assets/a906a0ce-2eae-4cda-8d2f-45f0fbda94d8)
-
 
 O curso pode ser rico em exemplos, mas sem uma estrutura lógica, o aluno fica restrito às possibilidades que foram apresentadas em aula. Aprender sobre a estrutura das linguagens de programação para além de uma linguagem específica como Dynamo ou Grasshopper pode ajudar o projetista a entender qual pode ser a melhor estratégia de projeto computacional para resolver um determinado problema. Isso também garante que o conhecimento aprendido no percurso possa ser reaproveitado a longo prazo, pois VPLs específicas podem mudar ou se tornar obsoletas.
 
@@ -50,39 +50,21 @@ Em *Types of Parametric Modelling*, os autores determinam um Modelo Geral Param�
 O GPM é descrito utilizando um conceito matemático comum na ciência da computação, o grafo acíclico dirigido ou directed acyclic graph (DAG) (figura 01). DAG é um gráfico contendo grafos dirigidos sem qualquer tipo de ciclo (DIRECTED, 2021). Não é possível ir e voltar diversas vezes pelo mesmo nó, ou seja, fazer recursão de dados.
 
 ### Figura 01 - Grafo Acíclico Dirigido
-![Grafo Acíclico Dirigido](Grafo_Acíclico_Dirigido.png)
+![Grafo Acíclico Dirigido](https://github.com/user-attachments/assets/2b17f4e8-ab94-4962-9aac-dcfadbd9a743)
 **Fonte**: Extraído de Wikipédia¹ 
 
 Considerando que arquitetos, engenheiros e projetistas não têm educação formal em programação, mas estão sendo introduzidos nela através das linguagens de programação visual (VPL), o conceito de iteração de dados pode se tornar muito abstrato e atrapalhar o envolvimento do aluno com o assunto. Desta maneira, para atingir o entendimento do processo com exemplos mais acessíveis, o conceito pode ser simplificado se criarmos um paralelo com um moedor de carne:
 ¹Disponível em: <https://en.wikipedia.org/wiki/Directed_acyclic_graph>. Acesso em: 15 jul. 2021.
 
-Na figura 02 à esquerda, temos um esquema de fluxo de dados em Grafo Acíclico, onde o operador (nó 07) irá inserir a carne para moer na máquina (nó 11) e o resultado sairá no recipiente (nó 09).
-
-### Figura 02 - Ilustração de um DAG utilizando moedores de carne
-![Ilustração de um DAG utilizando moedores de carne](assets/-Ilustração_de_um_DAG_utilizando_moedores_de_carne.png)
-**Fonte**: Próprio Autor 
-
 Os autores classificam as VPLs (que por sua vez são descritas como Grafos Acíclicos Dirigidos) pela maneira como iteram dados. Os tipos de iteração de dados são:
 
 - **Iteração simples:** Imaginemos um sistema (figura 03) onde o operador (nó 01) insira a carne em diversos moedores de uma vez (nó 02) e o resultado cairá em um conjunto de recipientes (nó 03). Esse processo é chamado de iteração simples num modelo paramétrico geral.
 
-### Figura 03 - Iteração simples em um GPM utilizando moedores de carne.
-![Iteração simples em um GPM utilizando moedores de carne](assets/Iteração_simples_em_um_GPM_utilizando_moedores_de_carne.png)
-**Fonte**: Próprio Autor 
-
 - **Iteração múltipla implícita:** Caso a iteração simples não seja suficiente, podemos colocar mais uma linha (figura 04) de moedores dentro do sistema de moedores, chamamos isso de listas de listas (nested list). Esse processo é chamado de iteração múltipla implícita.
-
-### Figura 04 - Iteração múltipla implícita em um GPM utilizando moedores de carne.
-![Iteração múltipla implícita em um GPM utilizando moedores de carne](assets/Iteração_múltipla_implícita_em_um_GPM_utilizando_moedores_de_carne.png)
-**Fonte**: Próprio Autor 
 
 - **Iteração múltipla explícita:** Por último, se desejarmos mais um tipo de iteração (figura 05), podemos colocar um tempero especial (nó 04) para cada entrada. Esse tipo de nó especial (for each) faz parte da iteração múltipla explícita. Os autores ainda subdividem essa iteração, entretanto, para nosso propósito, paramos nessa simplificação.
 
-### Figura 05 - Iteração múltipla explícita em um GPM utilizando moedores de carne.
-![Iteração múltipla explícita em um GPM utilizando moedores de carne](assets/Iteração_múltipla_explícita_em_um_GPM_utilizando_moedores_de_carne.png)
-**Fonte**: Próprio Autor 
-
-As iterações classificadas pelos autores e exemplificadas acima, formam a base para a taxonomia de modelos paramétricos descritos a seguir:
+As iterações formam a base para a taxonomia de modelos paramétricos descritos a seguir:
 
 - **Modelagem de Objetos:** Programas que não permitem nenhum tipo de iteração, por exemplo, programas CAD.
 - **Modelagem de Associação:** Descrição que envolve uma única rodada de iterações (figura 03), por exemplo, o programa Autodesk Revit.
@@ -106,7 +88,7 @@ Nesta opção, o programa BIM incorpora funcionalidades da linguagem VPL. Porém
 O programa Revit possui os mais avançados tipos de associação (JANSSEN, 2015), e a modelagem de massas pode ser uma alternativa para a modelagem conceitual de um projeto. Conforme a modelagem conceitual evolui, as formas podem ser convertidas em elementos básicos que irão compor uma arquitetura mais detalhada (AUTODESK, 2021). Conforme figura 06, esse ambiente do programa permite criação de geometrias mais desafiadoras.
 
 ### Figura 06 - Comparação entre o edifício Turning Torso Building e sua versão criada utilizando o programa Revit
-![Comparação entre o edifício Turning Torso Building e sua versão criada utilizando o programa Revit](assets/Comparação_entre_o_edifício_Turning_Torso_Building_e_sua_versão_criada_utilizando_o_programa_Revit.png)
+![Comparação entre o edifício Turning Torso Building e sua versão criado utilizando o programa Revit](https://github.com/user-attachments/assets/d23abe61-d05f-4b7f-a952-c107f50e4aa6)
 **Fonte**: Extraído da página do curso de Revit do grupo Balkan Architect²
 
 ## Processo de Abordagem Acoplada (Coupled Approach)
@@ -119,8 +101,6 @@ Em inglês, *tightly coupled*, é a utilização de um programa VPL que utiliza 
 
 #### Autodesk Dynamo
 
-Pela taxonomia de Janssen e Stouffs (JANSSEN; STOUFFS, 2015), o programa Dynamo é classificado como um programa que suporta Modelagem com base em Procedimentos, ou seja, também suporta modelagem de fluxo de dados e todas as iterações, implícitas e explícitas. Baseado em grafos, o Dynamo está associado à ferramenta de modelagem de objetos denominada Autodesk Revit. Seu uso é difundido no meio BIM, e conforme apresentado a seguir, é um programa de linguagem VPL muito utilizado por projetistas. No repositório bibliográfico Scopus, ao consultar as palavras-chave BIM e Visual Programming Language, cerca de 226 publicações são retornadas. Podemos verificar na nuvem de pontos que mostra as palavras-chaves destes artigos, que Dynamo é item presente como opção de programa baseado em grafo.
+Pela taxonomia de Janssen e Stouffs (JANSSEN; STOUFFS, 2015), o programa Dynamo é classificado como um programa que suporta Modelagem com base em Procedimentos, ou seja, também suporta modelagem de fluxo de dados e todas as iterações, implícitas e explícitas. Baseado em grafos, o Dynamo está associado à ferramenta de modelagem de objetos denominada Autodesk Revit. Seu uso é difundido no meio BIM, e conforme apresentado a seguir, é um programa de linguagem VPL muito utilizado por projetistas. 
 
-### Figura 07 - Nuvem de palavras-chaves dos resumos
-![Nuvem de palavras-chaves dos resumos](assets/Nuvem_de_palavras-chaves_dos_resumos.png)
-**Fonte**: Compilação do próprio autor com dados extraídos do repositório Scopus e aplicado no programa bibliométrico VOSViewer.
+
