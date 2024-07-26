@@ -1,0 +1,813 @@
+{
+  "Uuid": "a1248e39-6ffc-42ba-975a-6b28f8a00df3",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "REVIT API TEMPLATE",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n\r\n\r\napp = doc.Application\r\nversion_number = app.VersionNumber\r\nversion_name = app.VersionName\r\nversion = app.VersionNumber\r\nname = app.VersionName\r\nbuild = app.VersionBuild\r\nsub_version_number = app.SubVersionNumber\r\nproduct = app.Product\r\nlanguage = app.Language\r\nfolder = app.CurrentUsersDataFolderPath\r\n\r\nOUT = (\r\n    \"Version Number: {}\".format(version_number),\r\n    \"Version Name: {}\".format(version_name),\r\n    \"Version: {}\".format(version),\r\n    \"Name: {}\".format(name),\r\n    \"Build: {}\".format(build),\r\n    \"Sub Version Number: {}\".format(sub_version_number),\r\n    \"Product: {}\".format(product),\r\n    \"Language: {}\".format(language),\r\n    \"Folder: {}\".format(folder)\r\n)\r\n\r\n\r\n\r\n",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "289f0e2882974079b71a3ce5c353d46d",
+      "Inputs": [
+        {
+          "Id": "96d7925efaa4426b9798731634f851b3",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "03073cebf1f646a0b4c6853c7e168190",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n\r\ncollector = FilteredElementCollector(doc, doc.ActiveView.Id)\r\n\r\nOUT = collector",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "71ba378b043b4e829d30516b67b9fb07",
+      "Inputs": [
+        {
+          "Id": "a43a66ca50c84d5db59ed5c747dd36e3",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5187d75ed8ec40f29c18319d6697b144",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\nspecificView = UnwrapElement(IN[0])\r\n\r\ncollector = FilteredElementCollector(doc, specificView.Id)\r\n\r\nOUT = collector",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "df0385d15c06489fbc3490810758fc8a",
+      "Inputs": [
+        {
+          "Id": "53b5db46b6b048fe9aaad738647310b5",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f26153bacd414390b24bc795e37defbd",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Views, DSRevitNodesUI",
+      "SelectedIndex": 31,
+      "SelectedString": "Section Perspective",
+      "NodeType": "ExtensionNode",
+      "Id": "193002ec1ee04c048639895c61fd62d9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9ea0f884636349fbb6c0da8e8706fcc4",
+          "Name": "Views",
+          "Description": "The selected Views",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "All views available in the current document."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\ncategory = UnwrapElement(IN[0])\r\n\r\nwalls = FilteredElementCollector(doc).OfCategoryId(category.Id).WhereElementIsNotElementType().ToElements()\r\n\r\nnames = []\r\n\r\nfor i in walls:\r\n\tname = i.Name\r\n\tnames.append(name)\r\n\t\r\n\r\nOUT = walls, names",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "9f013a41731e4812a94e038ff9dd6441",
+      "Inputs": [
+        {
+          "Id": "79715a06a8f04845802889d502767db0",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4967f426d09d4f7e9e0b18adf475cb9d",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 686,
+      "SelectedString": "OST_Walls",
+      "NodeType": "ExtensionNode",
+      "Id": "b1a2ee4070534d88b67da55dcc28badd",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "243b7c6ceab2454ba6b89533e3cde725",
+          "Name": "Category",
+          "Description": "The selected Category.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "All built-in categories."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "5568b6909d344f089068e7fedd5235ca",
+      "Inputs": [
+        {
+          "Id": "02e1a759b85c46cab53edd004a7a1d6d",
+          "Name": "Category",
+          "Description": "The Category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "00f090790f3045f1bc6a10cff55115eb",
+          "Name": "Elements",
+          "Description": "An element type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Get all elements of the specified category from the model."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.Name",
+      "Id": "c6c6411b12d140dba4f9fcbc150a5d6e",
+      "Inputs": [
+        {
+          "Id": "a3d5e3bc10274dbbace0ad09049c0ac9",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "24d129c1c59b420aa1186398de5f1b4f",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the Name of the Element\n\nElement.Name: string"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n#category = UnwrapElement(IN[0])\r\n\r\ncategory_name = BuiltInCategory.OST_Doors   #sempre trocar o nome de acordo\r\n\r\ncollector = FilteredElementCollector(doc).OfCategory(category_name)\r\n\r\n#Items = collector.WhereElementIsNotElementType().ToElements()\r\n\r\n#cuidado ao colocar varios filtros no mesmo coletor, ele irá fazer um AND, AND, AND.\r\n\r\nTypes = collector.WhereElementIsElementType().ToElements()\r\n\r\n\"\"\"\r\nnames = []\r\n\r\nfor i in walls:\r\n\tname = i.Name\r\n\tnames.append(name)\r\n\"\"\"\r\n\r\nOUT = Types",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "4b5009172544454abc7726c71b3d0d90",
+      "Inputs": [
+        {
+          "Id": "60850ef3967d4e54acd6c22acc2f24fd",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ac03a1f3e320481a99d6ebfcac489a12",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n#category = UnwrapElement(IN[0])\r\n\r\ncategory_name = BuiltInCategory.OST_Doors   #sempre trocar o nome de acordo\r\n\r\n\r\nInvertFilter = ElementCategoryFilter(category_name, True)\r\n\r\ncollector = FilteredElementCollector(doc).WherePasses(InvertFilter).ToElements()\r\n\r\n\"\"\"\r\nnames = []\r\n\r\nfor i in walls:\r\n\tname = i.Name\r\n\tnames.append(name)\r\n\"\"\"\r\n\r\nOUT = collector",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "bda8a02d448349b8a3700c521ebe2fe8",
+      "Inputs": [
+        {
+          "Id": "bb96ef69e7594f638f35da31ccd73a8f",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bbb30597263b4930aabe1491e30adfb8",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n#category = UnwrapElement(IN[0])\r\n\r\ncategory_name = BuiltInCategory.OST_Doors   #sempre trocar o nome de acordo\r\n\r\n\r\nInvertFilter = ElementCategoryFilter(category_name, False)\r\n\r\ncollector = FilteredElementCollector(doc).WherePasses(InvertFilter).ToElements()\r\n\r\n\"\"\"\r\nnames = []\r\n\r\nfor i in walls:\r\n\tname = i.Name\r\n\tnames.append(name)\r\n\"\"\"\r\n\r\nOUT = collector",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "7ac61afd16f9461babab3e1202b1c3d3",
+      "Inputs": [
+        {
+          "Id": "57e8621792284bc38e513697460a8440",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e1fc56e048004d48915706babaac0376",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n\r\ncategories = List[BuiltInCategory]()\r\n\r\nfloors = BuiltInCategory.OST_Floors\r\nceilings = BuiltInCategory.OST_Ceilings\r\n\r\ncategories.Add(floors)\r\ncategories.Add(ceilings)\r\n\r\nFilter = ElementMulticategoryFilter(categories)\r\n\r\nElements_= FilteredElementCollector(doc).WherePasses(Filter).ToElements()\r\n\r\nOUT = Elements_",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "70d8439620064708a5d3dd4d6c8be93f",
+      "Inputs": [
+        {
+          "Id": "d4665e80f6bc4f758a5eccc29f0bcf29",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bf5ecddb726e4c44bbf33a54eb133e5e",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n\r\nFilter_ = ElementClassFilter(Level)\r\n\r\nallLevel = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\n\r\nOUT = allLevel",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "6e349271fdcb4cad9ef989668c0c04e5",
+      "Inputs": [
+        {
+          "Id": "49310699c3da40f392fb22899afc8c11",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d9db18d86df944ffa2bc13fce406de1e",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n\"\"\"\r\n# AssemblyInstance\r\nFilter_ = ElementClassFilter(AssemblyInstance)\r\nallAssemblyInstance = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allAssemblyInstance\r\n\r\n# GridType\r\nFilter_ = ElementClassFilter(GridType)\r\nallGridType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allGridType\r\n\r\n# ParameterElement\r\nFilter_ = ElementClassFilter(ParameterElement)\r\nallParameterElement = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allParameterElement\r\n\r\n# TilePattern\r\nFilter_ = ElementClassFilter(TilePattern)\r\nallTilePattern = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allTilePattern\r\n\r\n# AssemblyType\r\nFilter_ = ElementClassFilter(AssemblyType)\r\nallAssemblyType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allAssemblyType\r\n\r\n# Group\r\nFilter_ = ElementClassFilter(Group)\r\nallGroup = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allGroup\r\n\r\n# Phase\r\nFilter_ = ElementClassFilter(Phase)\r\nallPhase = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allPhase\r\n\r\n# View3D\r\nFilter_ = ElementClassFilter(View3D)\r\nallView3D = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allView3D\r\n\r\n# BeamSystem\r\nFilter_ = ElementClassFilter(BeamSystem)\r\nallBeamSystem = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allBeamSystem\r\n\r\n# ImageType\r\nFilter_ = ElementClassFilter(ImageType)\r\nallImageType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allImageType\r\n\r\n# ProjectInfo\r\nFilter_ = ElementClassFilter(ProjectInfo)\r\nallProjectInfo = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allProjectInfo\r\n\r\n# ViewPlan\r\nFilter_ = ElementClassFilter(ViewPlan)\r\nallViewPlan = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allViewPlan\r\n\r\n# BeamSystemType\r\nFilter_ = ElementClassFilter(BeamSystemType)\r\nallBeamSystemType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allBeamSystemType\r\n\r\n# ImageView\r\nFilter_ = ElementClassFilter(ImageView)\r\nallImageView = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allImageView\r\n\r\n# ProjectLocation\r\nFilter_ = ElementClassFilter(ProjectLocation)\r\nallProjectLocation = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allProjectLocation\r\n\r\n# ViewPlanType\r\nFilter_ = ElementClassFilter(ViewPlanType)\r\nallViewPlanType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allViewPlanType\r\n\r\n# CADLinkType\r\nFilter_ = ElementClassFilter(CADLinkType)\r\nallCADLinkType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allCADLinkType\r\n\r\n# IndependentTag\r\nFilter_ = ElementClassFilter(IndependentTag)\r\nallIndependentTag = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allIndependentTag\r\n\r\n# PropertyLine\r\nFilter_ = ElementClassFilter(PropertyLine)\r\nallPropertyLine = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allPropertyLine\r\n\r\n# ViewSchedule\r\nFilter_ = ElementClassFilter(ViewSchedule)\r\nallViewSchedule = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allViewSchedule\r\n\r\n# Ceiling\r\nFilter_ = ElementClassFilter(Ceiling)\r\nallCeiling = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allCeiling\r\n\r\n# InsertableObject\r\nFilter_ = ElementClassFilter(InsertableObject)\r\nallInsertableObject = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allInsertableObject\r\n\r\n# Revision\r\nFilter_ = ElementClassFilter(Revision)\r\nallRevision = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allRevision\r\n\r\n# ViewSection\r\nFilter_ = ElementClassFilter(ViewSection)\r\nallViewSection = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allViewSection\r\n\r\n# CeilingAndFloor\r\nFilter_ = ElementClassFilter(CeilingAndFloor)\r\nallCeilingAndFloor = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allCeilingAndFloor\r\n\r\n# Level\r\nFilter_ = ElementClassFilter(Level)\r\nallLevel = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allLevel\r\n\r\n# RevisionCloud\r\nFilter_ = ElementClassFilter(RevisionCloud)\r\nallRevisionCloud = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allRevisionCloud\r\n\r\n# ViewSheet\r\nFilter_ = ElementClassFilter(ViewSheet)\r\nallViewSheet = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allViewSheet\r\n\r\n# CeilingType\r\nFilter_ = ElementClassFilter(CeilingType)\r\nallCeilingType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allCeilingType\r\n\r\n# MEPCurve\r\nFilter_ = ElementClassFilter(MEPCurve)\r\nallMEPCurve = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allMEPCurve\r\n\r\n# RevitLinkInstance\r\nFilter_ = ElementClassFilter(RevitLinkInstance)\r\nallRevitLinkInstance = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allRevitLinkInstance\r\n\r\n# Viewport\r\nFilter_ = ElementClassFilter(Viewport)\r\nallViewport = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allViewport\r\n\r\n# CurtainSystem\r\nFilter_ = ElementClassFilter(CurtainSystem)\r\nallCurtainSystem = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allCurtainSystem\r\n\r\n# MEPSystem\r\nFilter_ = ElementClassFilter(MEPSystem)\r\nallMEPSystem = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allMEPSystem\r\n\r\n# RevitLinkType\r\nFilter_ = ElementClassFilter(RevitLinkType)\r\nallRevitLinkType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allRevitLinkType\r\n\r\n# Wall\r\nFilter_ = ElementClassFilter(Wall)\r\nallWall = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allWall\r\n\r\n# Dimension\r\nFilter_ = ElementClassFilter(Dimension)\r\nallDimension = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allDimension\r\n\r\n# Material\r\nFilter_ = ElementClassFilter(Material)\r\nallMaterial = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allMaterial\r\n\r\n# RoofType\r\nFilter_ = ElementClassFilter(RoofType)\r\nallRoofType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allRoofType\r\n\r\n# WallFoundation\r\nFilter_ = ElementClassFilter(WallFoundation)\r\nallWallFoundation = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allWallFoundation\r\n\r\n# DirectShape\r\nFilter_ = ElementClassFilter(DirectShape)\r\nallDirectShape = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allDirectShape\r\n\r\n# SharedParameterElement\r\nFilter_ = ElementClassFilter(SharedParameterElement)\r\nallSharedParameterElement = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allSharedParameterElement\r\n\r\n# WallFoundationType\r\nFilter_ = ElementClassFilter(WallFoundationType)\r\nallWallFoundationType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allWallFoundationType\r\n\r\n# SlabEdge\r\nFilter_ = ElementClassFilter(SlabEdge)\r\nallSlabEdge = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allSlabEdge\r\n\r\n# WallSweep\r\nFilter_ = ElementClassFilter(WallSweep)\r\nallWallSweep = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allWallSweep\r\n\r\n# Family\r\nFilter_ = ElementClassFilter(Family)\r\nallFamily = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allFamily\r\n\r\n# SpatialElement\r\nFilter_ = ElementClassFilter(SpatialElement)\r\nallSpatialElement = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allSpatialElement\r\n\r\n# WallSweepType\r\nFilter_ = ElementClassFilter(WallSweepType)\r\nallWallSweepType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allWallSweepType\r\n\r\n# FamilyInstance\r\nFilter_ = ElementClassFilter(FamilyInstance)\r\nallFamilyInstance = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allFamilyInstance\r\n\r\n# ModelText\r\nFilter_ = ElementClassFilter(ModelText)\r\nallModelText = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allModelText\r\n\r\n# Sweep\r\nFilter_ = ElementClassFilter(Sweep)\r\nallSweep = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allSweep\r\n\r\n# WallType\r\nFilter_ = ElementClassFilter(WallType)\r\nallWallType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allWallType\r\n\r\n# FamilySymbol\r\nFilter_ = ElementClassFilter(FamilySymbol)\r\nallFamilySymbol = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allFamilySymbol\r\n\r\n# ModelTextType\r\nFilter_ = ElementClassFilter(ModelTextType)\r\nallModelTextType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allModelTextType\r\n\r\n# FilledRegion\r\nFilter_ = ElementClassFilter(FilledRegion)\r\nallFilledRegion = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allFilledRegion\r\n\r\n# MullionType\r\nFilter_ = ElementClassFilter(MullionType)\r\nallMullionType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allMullionType\r\n\r\n# TableView\r\nFilter_ = ElementClassFilter(TableView)\r\nallTableView = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allTableView\r\n\r\n# Floor\r\nFilter_ = ElementClassFilter(Floor)\r\nallFloor = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allFloor\r\n\r\n# NestedFamilyTypeReference\r\nFilter_ = ElementClassFilter(NestedFamilyTypeReference)\r\nallNestedFamilyTypeReference = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allNestedFamilyTypeReference\r\n\r\n# TextElement\r\nFilter_ = ElementClassFilter(TextElement)\r\nallTextElement = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allTextElement\r\n\r\n# FloorType\r\nFilter_ = ElementClassFilter(FloorType)\r\nallFloorType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allFloorType\r\n\r\n# Grid\r\nFilter_ = ElementClassFilter(Grid)\r\nallGrid = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allGrid\r\n\r\n# PanelType\r\nFilter_ = ElementClassFilter(PanelType)\r\nallPanelType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allPanelType\r\n\r\n# TextElementType\r\nFilter_ = ElementClassFilter(TextElementType)\r\nallTextElementType = FilteredElementCollector(doc).WherePasses(Filter_).ToElements()\r\nOUT = allTextElementType\r\n\r\n\"\"\"\r\n",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "8e63dfdc8f9144d5a0c3cef6f75289a7",
+      "Inputs": [
+        {
+          "Id": "c4429a94bbd844d0bfcf682300a74c1e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "21ff3f01123f409ca41d45af076d40a1",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n\r\nview = doc.ActiveView.Id\r\n\r\nelem_inview = FilteredElementCollector(doc, view).OfCategory(BuiltInCategory.OST_Entourage)\r\n\r\nOUT = elem_inview",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "daf5c719af734e30a5c6b2fa727ba257",
+      "Inputs": [
+        {
+          "Id": "e2efdfdde74046d081d15ed48a20ce7c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f3a82fc82a9345ad807620d1fe11ce77",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########\r\n\r\nelements = UnwrapElement(IN[0])\r\nbb = elements.get_BoundingBox(doc.ActiveView)\r\n\r\noutline = Outline(bb.Min, bb.Max)\r\n\r\ntolerance = -0.01\r\n\r\nFilter = BoundingBoxIntersectsFilter(outline, tolerance, False)\r\n\r\nelems = FilteredElementCollector(doc, doc.ActiveView.Id).WherePasses(Filter)\r\n\r\nOUT = elems",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "423d2eb42cb74007a4d5f30e9750b41c",
+      "Inputs": [
+        {
+          "Id": "7f979d5c0164499c8181b2b87414c55d",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "93525ad274dc44ae95784b5ce283d71a",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "c85e5be0-d8d5-4148-836f-b55e711ef373-00068ac9"
+      ],
+      "Id": "cedad758910149de8802671a29d23ab2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "01f303209b4542bf8aeefbe617fa1628",
+          "Name": "Element",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9ea0f884636349fbb6c0da8e8706fcc4",
+      "End": "53b5db46b6b048fe9aaad738647310b5",
+      "Id": "b511ee2ca5194a9e9f6b100ed7eca5fb"
+    },
+    {
+      "Start": "243b7c6ceab2454ba6b89533e3cde725",
+      "End": "79715a06a8f04845802889d502767db0",
+      "Id": "7f64a53f12a94bf7b2c93eab5a4f3861"
+    },
+    {
+      "Start": "243b7c6ceab2454ba6b89533e3cde725",
+      "End": "02e1a759b85c46cab53edd004a7a1d6d",
+      "Id": "ae05a6aa0901470089862c74f1c73ca8"
+    },
+    {
+      "Start": "00f090790f3045f1bc6a10cff55115eb",
+      "End": "a3d5e3bc10274dbbace0ad09049c0ac9",
+      "Id": "052bac54a68944969a9fa8893751f6de"
+    },
+    {
+      "Start": "01f303209b4542bf8aeefbe617fa1628",
+      "End": "7f979d5c0164499c8181b2b87414c55d",
+      "Id": "8e1231a899184348b9eef6ed45791c07"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "1.10",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 21.670385360717773,
+      "EyeY": 23.785133361816406,
+      "EyeZ": 124.53443145751953,
+      "LookX": -10.954363822937012,
+      "LookY": -8.858062744140625,
+      "LookZ": -130.16300964355469,
+      "UpX": 0.012395688332617283,
+      "UpY": 0.98901581764221191,
+      "UpZ": 0.14728918671607971
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Actual Document Description",
+        "Id": "289f0e2882974079b71a3ce5c353d46d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 531.14498315876,
+        "Y": 260.039788642192
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Collector ActiveView ",
+        "Id": "71ba378b043b4e829d30516b67b9fb07",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 571.581626746102,
+        "Y": 361.13139761054828
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Collector SpecificView.Id",
+        "Id": "df0385d15c06489fbc3490810758fc8a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 828.26015539486446,
+        "Y": 464.09316756162286
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Views",
+        "Id": "193002ec1ee04c048639895c61fd62d9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 575.0978566232626,
+        "Y": 463.9811215174845
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Filter Elements by CategoryId()",
+        "Id": "9f013a41731e4812a94e038ff9dd6441",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 810.46856766600536,
+        "Y": 598.750169429087
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Categories",
+        "Id": "b1a2ee4070534d88b67da55dcc28badd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 568.708930807113,
+        "Y": 597.875898110212
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Category",
+        "Id": "5568b6909d344f089068e7fedd5235ca",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 567.97570873922825,
+        "Y": 693.10533625232188
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.Name",
+        "Id": "c6c6411b12d140dba4f9fcbc150a5d6e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 553.92883064806108,
+        "Y": 785.4136468055965
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Filter Elements by Category()",
+        "Id": "4b5009172544454abc7726c71b3d0d90",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 807.4145487779449,
+        "Y": 727.75756323944461
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Filter Elements by Category() (True)",
+        "Id": "bda8a02d448349b8a3700c521ebe2fe8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 786.63186838493073,
+        "Y": 859.81127990101845
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Filter Elements by Category() (False)",
+        "Id": "7ac61afd16f9461babab3e1202b1c3d3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 786.49535300672858,
+        "Y": 981.03795085378306
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ICollection - Filtering by multiple categories",
+        "Id": "70d8439620064708a5d3dd4d6c8be93f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 761.40176488667657,
+        "Y": 1105.8122442979607
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Filter by Class",
+        "Id": "6e349271fdcb4cad9ef989668c0c04e5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 883.36195697104836,
+        "Y": 1226.7254666164833
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ALL CLASSES - Filter",
+        "Id": "8e63dfdc8f9144d5a0c3cef6f75289a7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 865.84044315785764,
+        "Y": 1331.9853406305442
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Elements Visible in View",
+        "Id": "daf5c719af734e30a5c6b2fa727ba257",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 852.17255647551838,
+        "Y": 1435.0532147696365
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Elements Intersecting a Bounding Box",
+        "Id": "423d2eb42cb74007a4d5f30e9750b41c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 804.931167072082,
+        "Y": 1584.0075964694433
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Element",
+        "Id": "cedad758910149de8802671a29d23ab2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 497.29526264043648,
+        "Y": 1553.1483969456954
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "2b3ed3c3753344ae95b16f5a70e1f48d",
+        "Title": "Collect Revit Elements \r\n\r\nRevit's FilteredElementCollector class allows you to search for elements in the document database. \r\n\r\nTo create an instance of this class, you have to pass the document as an argument to the constructor, and then use a set of specific filtering rules to find the desired elements. ",
+        "Nodes": [],
+        "Left": 193.67602591792667,
+        "Top": 104.90280777537794,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "cf186bdcd8b64d118352fd5e27cfeef4",
+        "Title": "import clr #This is .NET's Common Language Runtime. It's an execution environment\r\n#that is able to execute code from several different languages.\r\nimport sys #sys is a fundamental Python library - here, we're using it to load in\r\n#the standard IronPython libraries\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib') #Imports the\r\n#standard IronPython libraries, which cover everything from servers and\r\n#encryption through to regular expressions.\r\nimport System #The System namespace at the root of .NET\r\nfrom System import Array #.NET class for handling array information\r\nfrom System.Collections.Generic import * #Lets you handle generics. Revit's API\r\n#sometimes wants hard-typed 'generic' lists, called ILists. If you don't need\r\n#these you can delete this line.\r\nclr.AddReference('ProtoGeometry')  #A Dynamo library for its proxy geometry\r\n#classes. You'll only need this if you're interacting with geometry.\r\nfrom Autodesk.DesignScript.Geometry import * #Loads everything in Dynamo's\r\n#geometry library\r\nclr.AddReference(\"RevitNodes\") #Dynamo's nodes for Revit\r\nimport Revit #Loads in the Revit namespace in RevitNodes\r\nclr.ImportExtensions(Revit.Elements) #More loading of Dynamo's Revit libraries\r\nclr.ImportExtensions(Revit.GeometryConversion) #More loading of Dynamo's\r\n#Revit libraries. You'll only need this if you're interacting with geometry.\r\nclr.AddReference(\"RevitServices\") #Dynamo's classes for handling Revit documents\r\nimport RevitServices \r\nfrom RevitServices.Persistence import DocumentManager #An internal Dynamo class\r\n#that keeps track of the document that Dynamo is currently attached to\r\nfrom RevitServices.Transactions import TransactionManager #A Dynamo class for\r\n#opening and closing transactions to change the Revit document's database\r\n\r\nclr.AddReference(\"RevitAPI\") #Adding reference to Revit's API DLLs\r\nclr.AddReference(\"RevitAPIUI\") #Adding reference to Revit's API DLLs\r\n\r\nimport Autodesk #Loads the Autodesk namespace\r\nfrom Autodesk.Revit.DB import * #Loading Revit's API classes\r\nfrom Autodesk.Revit.UI import * #Loading Revit's API UI classes  \r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument #Finally, setting up handles to the active Revit document\r\nuiapp = DocumentManager.Instance.CurrentUIApplication #Setting a handle to the active Revit UI document\r\napp = uiapp.Application  #Setting a handle to the currently-open instance of the Revit application\r\nuidoc = uiapp.ActiveUIDocument #Setting a handle to the currently-open instance of the Revit UI application\r\n\r\n#######OK NOW YOU CAN CODE########",
+        "Nodes": [],
+        "Left": 194.630646166644,
+        "Top": 266.723440804197,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "a76b15e68de344368615c60787b830e4",
+        "Title": "OST = Object STtyle \r\n\r\nOST_ + Category Name ",
+        "Nodes": [],
+        "Left": 496.31683079625407,
+        "Top": 103.07045846462401,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -429.32525480730556,
+    "Y": -1276.6290726665341,
+    "Zoom": 0.87040888246192272
+  }
+}
