@@ -7,7 +7,7 @@
 
 Modelagem da Informação da Construção (em inglês, Building Information Modeling - BIM) está cada vez mais presente e trouxe grandes mudanças na arquitetura, engenharia e construção (AEC), pois trata-se de uma representação tridimensional fiel de uma edificação (JANSSEN, 2015; WEN et al., 2021):
 
-                                            > Quando completo, o modelo gerado computacionalmente contém a geometria precisa e os dados relevantes, necessários para dar suporte à construção, à fabricação e ao fornecimento de insumos necessários para a realização da construção (EASTMAN et al., 2018, tradução nossa).
+> Quando completo, o modelo gerado computacionalmente contém a geometria precisa e os dados relevantes, necessários para dar suporte à construção, à fabricação e ao fornecimento de insumos necessários para a realização da construção (EASTMAN et al., 2018, tradução nossa).
 
 Os modelos BIM são desenvolvidos através de plataformas conhecidas como paramétricas, baseadas em objetos. Possuem um tipo de inteligência ou comportamento de projeto (em inglês, design behavior) (EASTMAN et al., 2018). Por exemplo, ao modelar um elemento parede, a mesma estará automaticamente identificada na lista de quantidades e nos cortes associados. Outra característica paramétrica está na inserção dos elementos, uma porta só poderá ser inserida em um elemento parede, e este, por sua vez, terá a área de material imediatamente removida dos metadados.
 
