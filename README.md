@@ -354,9 +354,10 @@ def draw():
 - Criação e uso de diálogos de tarefas para interação com o usuário
 - **Exercício:** Script que utiliza diálogos de tarefas para interagir com o usuário
 
-#### Aula 5: Glossário
+#### Aula 5: Revit Dashboard 
 - Revisão de termos e conceitos chave do curso
-- **Exercício:** Criação de um glossário personalizado pelos alunos
+- Exemplo: https://revitoverview.streamlit.app/
+- **Exercício:** Criação de um dashboard com Streamlit e Python 
 
 #### Aula 6: Conclusão e Próximos Passos
 - Reflexão sobre o curso e próximos passos
