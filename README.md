@@ -59,7 +59,7 @@ Considerando que arquitetos, engenheiros e projetistas não têm educação form
 Na figura 02 à esquerda, temos um esquema de fluxo de dados em Grafo Acíclico, onde o operador (nó 07) irá inserir a carne para moer na máquina (nó 11) e o resultado sairá no recipiente (nó 09).
 
 ### Figura 02 - Ilustração de um DAG utilizando moedores de carne
-![Ilustração de um DAG utilizando moedores de carne](assets/Ilustração_de_um_DAG_utilizando_moedores_de_carne.png)
+![Ilustração de um DAG utilizando moedores de carne](assets/-Ilustração_de_um_DAG_utilizando_moedores_de_carne.png)
 **Fonte**: Próprio Autor 
 
 Os autores classificam as VPLs (que por sua vez são descritas como Grafos Acíclicos Dirigidos) pela maneira como iteram dados. Os tipos de iteração de dados são:
