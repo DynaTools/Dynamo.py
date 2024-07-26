@@ -1,93 +1,156 @@
 
-# Revit API and Python: A Comprehensive Guide
+# (PT-BR) 
 
-## Overview
-The Revit API (Application Programming Interface) allows developers to interact with Autodesk Revit software programmatically. This interaction enables the automation of repetitive tasks, extraction of data, and creation of custom tools to enhance productivity. Combining the Revit API with Python opens up a world of possibilities for customization and efficiency gains.
+# Curso de Dynamo - Python 
 
-## Key Features of Revit API
-- **Automation**: Automate repetitive tasks to save time and reduce errors.
-- **Customization**: Create custom commands and tools tailored to specific workflows.
-- **Data Extraction**: Extract and manipulate data from Revit models for analysis or reporting.
-- **Integration**: Integrate Revit with other software applications and databases.
+# INTRODUÇÃO
 
-## Using Revit API with Python
-Python, a versatile and easy-to-learn programming language, can be used with the Revit API to enhance Revit's capabilities. This is typically achieved using the RevitPythonShell (RPS) or the Dynamo BIM extension with Python scripting nodes.
+Modelagem da Informação da Construção (em inglês, Building Information Modeling - BIM) está cada vez mais presente e trouxe grandes mudanças na arquitetura, engenharia e construção (AEC), pois trata-se de uma representação tridimensional fiel de uma edificação (JANSSEN, 2015; WEN et al., 2021):
 
-### Getting Started
-To start using Python with the Revit API, you need to set up an environment that supports Python scripting within Revit. One common approach is to use the RevitPythonShell (RPS), which embeds an IronPython interpreter into Revit.
+                                            > Quando completo, o modelo gerado computacionalmente contém a geometria precisa e os dados relevantes, necessários para dar suporte à construção, à fabricação e ao fornecimento de insumos necessários para a realização da construção (EASTMAN et al., 2018, tradução nossa).
 
-### Example: Retrieving Elements by Category
-The following example demonstrates how to retrieve all wall elements in a Revit document using Python and the Revit API.
-```python
-import clr
-clr.AddReference("RevitServices")
-clr.AddReference("RevitAPI")
-from RevitServices.Persistence import DocumentManager
-from Autodesk.Revit.DB import FilteredElementCollector, BuiltInCategory
+Os modelos BIM são desenvolvidos através de plataformas conhecidas como paramétricas, baseadas em objetos. Possuem um tipo de inteligência ou comportamento de projeto (em inglês, design behavior) (EASTMAN et al., 2018). Por exemplo, ao modelar um elemento parede, a mesma estará automaticamente identificada na lista de quantidades e nos cortes associados. Outra característica paramétrica está na inserção dos elementos, uma porta só poderá ser inserida em um elemento parede, e este, por sua vez, terá a área de material imediatamente removida dos metadados.
 
-doc = DocumentManager.Instance.CurrentDBDocument
-walls = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Walls).WhereElementIsNotElementType().ToElements()
+Este tipo de inteligência paramétrica está ausente em programas de modelagem CAD. Estes necessitam que o projetista identifique o elemento, preenchendo a propriedade associada. No exemplo citado anteriormente, a porta poderá ser inserida em qualquer ponto do modelo CAD sem que isso gere qualquer identificação de erro, assim como cortes precisarão ser atualizados quando ocorrerem mudanças na planta baixa.
 
-for wall in walls:
-    print(wall.Id)
-```
+Os limites e usabilidades de programas CAD e BIM podem variar em um projeto e os benefícios devem ser avaliados pela equipe envolvida. Apesar das disponibilidades de diversas ferramentas CAD e BIM, o projetista poderá ser confrontado, eventualmente, com uma necessidade de buscar o apoio da programação como solução de expansão de funcionalidade dos softwares (LANDIM, 2019). A programação visual ou visual programming language (VPL) é o nome que se dá para qualquer tipo de linguagem de programação possível de se manipular em um formato gráfico (NOONE; MOONEY, 2017). Uma das características positivas desta forma de programar é o retorno visual instantâneo do resultado ao projetista (LANDIM, 2019 apud CELANI;VAZ, 2012), sem a necessidade de compilar códigos complexos com domínio dos conceitos de programação e criação de algoritmos.
 
-## Benefits of Using Python with Revit API
-### Efficiency Gains
-- **Time Savings**: Automating routine tasks can save significant amounts of time.
-- **Error Reduction**: Automation reduces the likelihood of human error.
-- **Consistency**: Ensure consistent application of standards and procedures.
+Pesquisas indicam que o uso da VPL apresenta benefícios ao projetista em relação à programação textual (NOONE; MOONEY, 2017), em especial àqueles que necessitam de mais feedbacks visuais de seu processo. A VPL melhora a capacidade de enxergar opções de parametrização dentro de projetos. Esta forma de pensar é classificada como pensamento paramétrico (WURZER; ALAÇAM; LORENZ, 2011). O projetista, ao desenvolver este raciocínio, começa de forma abstrata a conceber conexões entre elementos do projeto que pode ser traduzido em algoritmos.
 
-### Enhanced Capabilities
-- **Custom Workflows**: Develop custom workflows that align with specific project requirements.
-- **Advanced Data Manipulation**: Perform complex data manipulations and calculations that are not possible within the Revit UI.
-- **Extended Functionality**: Integrate Revit with other tools and platforms to extend its functionality.
+Algoritmos são o conjunto de regras, operações e procedimentos definidos, ordenados e usados na solução de um problema em um número finito de etapas (ALGORITMO, 2021). Portanto, a ordem e organização de informações são cruciais para que o projetista produza bons resultados. É importante que o projetista tenha conhecimento sobre os tipos e classificações das ferramentas que utiliza no projeto, pois pode tomar decisões mais informadas sobre quando utilizar um determinado software, tecnologia ou linguagem de programação durante o desenvolvimento do projeto.
 
-### Real-World Applications
-- **Batch Processing**: Automate the batch processing of model elements, such as renaming, parameter updates, and model cleanup.
-- **Data Export**: Extract model data for use in external applications, such as Excel, databases, or web services.
-- **Custom Tools**: Develop custom tools and plugins to enhance Revit’s capabilities.
+# PROBLEMA DE PESQUISA E METODOLOGIA
 
-## Example Repository: A Puzzle to Solve
-In this repository, you will find various examples of how to use the Revit API with Python. Think of these examples as pieces of a puzzle. With the right pieces, you can achieve your specific goals and create powerful customizations within Revit.
+Os cursos existentes que se propõem a ensinar o uso das interfaces de programação visual como Grasshopper e Dynamo são excelentes meios de introduzir o projetista nas ferramentas de design paramétrico. Encontramos diversos cursos rápidos destas ferramentas disponíveis nas plataformas Linkedin Learning e Udemy, por exemplo. Esses cursos possuem conteúdos que ensinam o projetista a utilizar a interface dos programas de linguagem visual. Observamos que o conteúdo é direcionado a ensinar através de exemplos práticos que complementam funcionalidades que não estão presentes nos programas BIM por padrão (JANSSEN, 2015).
 
-### Example: Filtering Elements by Level
-The following example demonstrates how to filter elements by their hosting level.
-```python
-import clr
-clr.AddReference("RevitServices")
-clr.AddReference("RevitAPI")
-from RevitServices.Persistence import DocumentManager
-from Autodesk.Revit.DB import FilteredElementCollector, ElementLevelFilter
+Como ilustra a tabela 01, os cursos têm focado em ensinar os alunos a sintaxe da linguagem, ou seja, as regras que determinam quais combinações de nós geram funções úteis, como os construtores operam com os tipos de dados, quais são os símbolos e pontuações aceitas para declarar variáveis e listas de dados, etc. Desta maneira, os cursos têm se configurado como um conjunto de rotinas prontas que podem ser ensinadas para que os alunos comecem a entender o funcionamento da interface através destes exemplos.
 
-doc = DocumentManager.Instance.CurrentDBDocument
-level = UnwrapElement(IN[0])
-level_filter = ElementLevelFilter(level.Id)
-elements = FilteredElementCollector(doc).WherePasses(level_filter).WhereElementIsNotElementType().ToElements()
+De maneira prática, isto torna o conteúdo do curso objetivo e funcional. Entretanto, deixar o aluno focado na ferramenta ou no aprendizado da interface, não garante que entenda um arcabouço teórico-prático que fornece autonomia para que pense nos fluxos de projeto.
 
-for elem in elements:
-    print(elem.Id)
-```
-
-### Example: Combining Filters
-Combine multiple filters to achieve more refined results.
-```python
-import clr
-clr.AddReference("RevitServices")
-clr.AddReference("RevitAPI")
-from RevitServices.Persistence import DocumentManager
-from Autodesk.Revit.DB import FilteredElementCollector, BuiltInCategory, ElementCategoryFilter, ElementLevelFilter
-
-doc = DocumentManager.Instance.CurrentDBDocument
-level = UnwrapElement(IN[0])
-category = BuiltInCategory.OST_Walls
-level_filter = ElementLevelFilter(level.Id)
-category_filter = ElementCategoryFilter(category)
-elements = FilteredElementCollector(doc).WherePasses(level_filter).WherePasses(category_filter).WhereElementIsNotElementType().ToElements()
-
-for elem in elements:
-    print(elem.Id)
-```
+| Tabela 01 - Grade do curso de Dynamo mais popular da plataforma LinkedIn. |
+| --- | --- |
+| **Dynamo 2.x Essential Training** | |
+| **Introdução** | |
+| O que é Dynamo? | |
+| Navegando na UI e biblioteca de nós | |
+| Inserindo e conectando nós | |
+| **Trabalhando com Dados** | |
+| Criando pontos | |
+| Criando linhas, poli curvas e polígonos | |
+| Criando arcos e curvas NURBS | |
+| Usando vetores para transformar geometria | |
+| Rotacionando e espelhando com vetores e planos | |
+| Criando superfícies e sólidos | |
+| Criando sólidos com loft | |
+| Modificando sólidos | |
+| Analisando sólidos | |
+| Analisando curvas | |
+| Analisando superfícies | |
+| Exportando geometria como SAT ou STL | |
+| **Revit** | |
+| Acessando geometria do Revit e dados | |
+| Conectando Dynamo SAT com o Revit | |
+| Inserindo famílias | |
+| Inserindo famílias adaptativas | |
+| Inserindo componentes adaptativos | |
+| Ajustando valores no Revit | |
+| Criando vistas e planilhas | |
+| **Conclusão** | |
+| Próximos passos | |
+| **Fonte**: Elaborado pelo autor baseado em Linkedin (2021). | |
 
 
+O curso pode ser rico em exemplos, mas sem uma estrutura lógica, o aluno fica restrito às possibilidades que foram apresentadas em aula. Aprender sobre a estrutura das linguagens de programação para além de uma linguagem específica como Dynamo ou Grasshopper pode ajudar o projetista a entender qual pode ser a melhor estratégia de projeto computacional para resolver um determinado problema. Isso também garante que o conhecimento aprendido no percurso possa ser reaproveitado a longo prazo, pois VPLs específicas podem mudar ou se tornar obsoletas.
 
+Se o aluno conhecer os conceitos que estruturam VPLs em um contexto mais ampliado e em diálogo com as linguagens de programação textual, ele estará melhor preparado para estas mudanças e adaptações (LEITÃO, 2013). Além disso, existem algumas diferenças fundamentais nas necessidades que um projetista mais focado em BIM precisa alcançar nos fluxos de trabalho baseados nesta tecnologia:
+
+- Em BIM, não é frequente o uso da VPL Dynamo para testar concepção formal de projetos, sejam formas complexas, simples ou orgânicas. Esta fase de investigação formal é geralmente feita em outros programas tridimensionais ou usando a VPL Grasshopper, que possuem funções mais adaptadas para esta fase de projeto, e são posteriormente conectadas para fluxos BIM.
+- Ferramentas BIM já possuem um nível de parametria incorporado por padrão. Eastman et al. (2018) chama este comportamento inteligente de design behavior:
+
+> A gama de regras que podem ser incorporadas em um gráfico paramétrico determina a generalidade do sistema. As famílias de objetos paramétricos são definidas usando parâmetros e as relações entre os parâmetros. Uma vez que as relações restringem o comportamento do projeto de um modelo paramétrico, a modelagem paramétrica também é conhecida como modelagem de restrição (EASTMAN et al., 2018, p.39).
+
+Isso ilustra que programadores de VPL BIM não precisam criar códigos que restrinjam as relações entre os objetos ou componentes de um modelo, como geralmente é feito por usuários de Grasshopper num primeiro momento, uma vez que o sistema BIM já traz essa solução incorporada.
+
+# TAXONOMIA DOS MODELOS PARAMÉTRICOS
+
+Quando um curso de ciência da computação é bem delineado e desenvolvido, qualquer um pode aprender a programar (LEITÃO, 2013). Nesta linha, buscamos estruturar o curso com base na taxonomia de Patrick Janssen e Rudi Stouffs, formando assim a primeira bibliografia proposta ao aluno de VPL no começo do seu curso. Existem muitos softwares BIM no mercado e, às vezes, chamá-los de programa BIM, programa paramétrico ou programa de modelagem paramétrica pode não ser suficiente se desejamos comparar e classificar os mesmos.
+
+Em *Types of Parametric Modelling*, os autores determinam um Modelo Geral Paramétrico (em inglês, General Parametric Model (GPM)) como primeira estrutura da classificação.
+
+O GPM é descrito utilizando um conceito matemático comum na ciência da computação, o grafo acíclico dirigido ou directed acyclic graph (DAG) (figura 01). DAG é um gráfico contendo grafos dirigidos sem qualquer tipo de ciclo (DIRECTED, 2021). Não é possível ir e voltar diversas vezes pelo mesmo nó, ou seja, fazer recursão de dados.
+
+### Figura 01 - Grafo Acíclico Dirigido
+![Grafo Acíclico Dirigido](assets/Grafo_Acíclico_Dirigido.png)
+**Fonte**: Extraído de Wikipédia¹ 
+
+Considerando que arquitetos, engenheiros e projetistas não têm educação formal em programação, mas estão sendo introduzidos nela através das linguagens de programação visual (VPL), o conceito de iteração de dados pode se tornar muito abstrato e atrapalhar o envolvimento do aluno com o assunto. Desta maneira, para atingir o entendimento do processo com exemplos mais acessíveis, o conceito pode ser simplificado se criarmos um paralelo com um moedor de carne:
+¹Disponível em: <https://en.wikipedia.org/wiki/Directed_acyclic_graph>. Acesso em: 15 jul. 2021.
+
+Na figura 02 à esquerda, temos um esquema de fluxo de dados em Grafo Acíclico, onde o operador (nó 07) irá inserir a carne para moer na máquina (nó 11) e o resultado sairá no recipiente (nó 09).
+
+### Figura 02 - Ilustração de um DAG utilizando moedores de carne
+![Ilustração de um DAG utilizando moedores de carne](assets/Ilustração_de_um_DAG_utilizando_moedores_de_carne.png)
+**Fonte**: Próprio Autor 
+
+Os autores classificam as VPLs (que por sua vez são descritas como Grafos Acíclicos Dirigidos) pela maneira como iteram dados. Os tipos de iteração de dados são:
+
+- **Iteração simples:** Imaginemos um sistema (figura 03) onde o operador (nó 01) insira a carne em diversos moedores de uma vez (nó 02) e o resultado cairá em um conjunto de recipientes (nó 03). Esse processo é chamado de iteração simples num modelo paramétrico geral.
+
+### Figura 03 - Iteração simples em um GPM utilizando moedores de carne.
+![Iteração simples em um GPM utilizando moedores de carne](assets/Iteração_simples_em_um_GPM_utilizando_moedores_de_carne.png)
+**Fonte**: Próprio Autor 
+
+- **Iteração múltipla implícita:** Caso a iteração simples não seja suficiente, podemos colocar mais uma linha (figura 04) de moedores dentro do sistema de moedores, chamamos isso de listas de listas (nested list). Esse processo é chamado de iteração múltipla implícita.
+
+### Figura 04 - Iteração múltipla implícita em um GPM utilizando moedores de carne.
+![Iteração múltipla implícita em um GPM utilizando moedores de carne](assets/Iteração_múltipla_implícita_em_um_GPM_utilizando_moedores_de_carne.png)
+**Fonte**: Próprio Autor 
+
+- **Iteração múltipla explícita:** Por último, se desejarmos mais um tipo de iteração (figura 05), podemos colocar um tempero especial (nó 04) para cada entrada. Esse tipo de nó especial (for each) faz parte da iteração múltipla explícita. Os autores ainda subdividem essa iteração, entretanto, para nosso propósito, paramos nessa simplificação.
+
+### Figura 05 - Iteração múltipla explícita em um GPM utilizando moedores de carne.
+![Iteração múltipla explícita em um GPM utilizando moedores de carne](assets/Iteração_múltipla_explícita_em_um_GPM_utilizando_moedores_de_carne.png)
+**Fonte**: Próprio Autor 
+
+As iterações classificadas pelos autores e exemplificadas acima, formam a base para a taxonomia de modelos paramétricos descritos a seguir:
+
+- **Modelagem de Objetos:** Programas que não permitem nenhum tipo de iteração, por exemplo, programas CAD.
+- **Modelagem de Associação:** Descrição que envolve uma única rodada de iterações (figura 03), por exemplo, o programa Autodesk Revit.
+- **Modelagem de Fluxo de Dados:** Programas que permitem iteração implícita utilizando listas dentro de listas, figura 04, por exemplo, o Grasshopper para Rhino3D e Generative Components da Bentley.
+- **Modelagem com base em Procedimentos:** Programas que permitem iteração explícita, figura 05, por exemplo, o Dynamo BIM.
+
+Estes tipos de iteração, e por sua vez os tipos de modelagem que as suportam, são importantes para entendermos a estrutura, tanto das VPLs usadas na área, quanto dos tipos de modelagem suportadas por programas considerados paramétricos. A seguir, nos concentraremos nas especificidades dos fluxos paramétricos BIM.
+
+# FLUXO PARAMÉTRICO BIM
+
+O termo fluxo paramétrico BIM (em inglês, Parametric BIM Workflow) é o nome proposto também pelo autor Patrick Janssen (2015) para identificar a conexão entre programas baseados em grafos, VPL e sistemas BIM. O autor aplica uma tarefa de modelagem para trazer à luz a necessidade de conexão entre os tipos de modelos paramétricos:
+
+> A tarefa de modelagem consiste em gerar as placas de piso para uma torre cônica cuja forma geral é definida por uma superfície curva. Placas de piso para a torre são então geradas em intervalos regulares, até que o topo da torre seja alcançado. O perímetro das placas de piso está associado a uma superfície curva definindo a forma da torre, garantindo assim que as placas de piso se atualizem automaticamente sempre que a forma for modificada (JANSSEN, 2015, p 438. tradução nossa).
+
+O autor utiliza este exemplo para demonstrar que existem algumas demandas em projetos que precisam de outros níveis de parametria que não são comportados pelo software BIM padrão. Através dos tipos de modelagem paramétrica apresentados anteriormente, um sistema BIM é classificado como modelagem de associação. Este tipo não comporta um fluxo de trabalho que permita um nível de iteração suficiente para que as placas de piso fossem atualizadas automaticamente sempre que a forma do edifício fosse modificada. O resultado só foi possível de ser alcançado com o uso de modelagem de procedimentos e fluxo de dados, através de programação VPL. Assim, o autor propõe duas abordagens para realizar a tarefa em modelos BIM: a abordagem incorporada (em inglês, embedded) e a abordagem acoplada (em inglês, coupled).
+
+## Processo de Abordagem Incorporada (Embedded Approach)
+
+Nesta opção, o programa BIM incorpora funcionalidades da linguagem VPL. Porém, identifica Janssen (2015), pela natureza dos programas BIM isto seria inviável na prática, pois quando se utiliza programas como o Grasshopper, busca-se uma ferramenta leve e responsiva para poder experimentar diversas opções de projeto. Algo que pode não ser efetivo em BIM quando o modelo se torna complexo (JANSSEN, 2015). Entretanto, ferramentas BIM ainda podem ser mais exploradas neste sentido com o uso de massa conceitual.
+
+O programa Revit possui os mais avançados tipos de associação (JANSSEN, 2015), e a modelagem de massas pode ser uma alternativa para a modelagem conceitual de um projeto. Conforme a modelagem conceitual evolui, as formas podem ser convertidas em elementos básicos que irão compor uma arquitetura mais detalhada (AUTODESK, 2021). Conforme figura 06, esse ambiente do programa permite criação de geometrias mais desafiadoras.
+
+### Figura 06 - Comparação entre o edifício Turning Torso Building e sua versão criada utilizando o programa Revit
+![Comparação entre o edifício Turning Torso Building e sua versão criada utilizando o programa Revit](assets/Comparação_entre_o_edifício_Turning_Torso_Building_e_sua_versão_criada_utilizando_o_programa_Revit.png)
+**Fonte**: Extraído da página do curso de Revit do grupo Balkan Architect²
+
+## Processo de Abordagem Acoplada (Coupled Approach)
+
+Neste tipo de abordagem, programas escritos em VPL são acoplados a modelos BIM para a realização de tarefas de modelagem e gerenciamento de dados (JANSSEN, 2015). O autor classifica a abordagem acoplada em duas subcategorias:
+
+### Processo Fortemente Acoplado
+
+Em inglês, *tightly coupled*, é a utilização de um programa VPL que utiliza a API do programa BIM para execução de tarefas, como exemplo, o Dynamo com o software Revit e Generative Components com o AecoSIM da Bentley.
+
+#### Autodesk Dynamo
+
+Pela taxonomia de Janssen e Stouffs (JANSSEN; STOUFFS, 2015), o programa Dynamo é classificado como um programa que suporta Modelagem com base em Procedimentos, ou seja, também suporta modelagem de fluxo de dados e todas as iterações, implícitas e explícitas. Baseado em grafos, o Dynamo está associado à ferramenta de modelagem de objetos denominada Autodesk Revit. Seu uso é difundido no meio BIM, e conforme apresentado a seguir, é um programa de linguagem VPL muito utilizado por projetistas. No repositório bibliográfico Scopus, ao consultar as palavras-chave BIM e Visual Programming Language, cerca de 226 publicações são retornadas. Podemos verificar na nuvem de pontos que mostra as palavras-chaves destes artigos, que Dynamo é item presente como opção de programa baseado em grafo.
+
+### Figura 07 - Nuvem de palavras-chaves dos resumos
+![Nuvem de palavras-chaves dos resumos](assets/Nuvem_de_palavras-chaves_dos_resumos.png)
+**Fonte**: Compilação do próprio autor com dados extraídos do repositório Scopus e aplicado no programa bibliométrico VOSViewer.
