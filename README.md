@@ -1,4 +1,4 @@
-# Curso de Dynamo - Python
+# Curso Modelagem Paramétrica com Python e Revit
 
 ## INTRODUÇÃO
 
@@ -164,3 +164,196 @@ Imagine que você está trabalhando em um projeto de grande escala que requer a 
 Este fluxo de trabalho não só economiza tempo, mas também garante que todas as luminárias sejam colocadas de acordo com as especificações do projeto, melhorando a qualidade e a eficiência do processo de design.
 
 A combinação de Python, Revit e Dynamo oferece um poderoso conjunto de ferramentas para qualquer profissional de AEC, permitindo a automação avançada, a criação de geometrias complexas e a análise profunda de projetos, tudo isso com uma flexibilidade e customização incomparáveis.
+
+# Grade do Curso Modelagem Paramétrica com Python e Revit
+
+O curso tem como proposta transitar entre ferramentas de programação visual, textual e de modelagem, sendo Dynamo e Revit.
+
+Inicia com programação pura em Python em um ambiente leve e que permita ver, imediatamente, o resultado. Essa primeira parte será com o uso do Processing.py. 
+
+## Módulo 01 - Introdução a programação visual em Python
+Duração: 15 horas
+Objetivo: Apresentar o conceito da programação, variáveis, listas e orientação a objetos. 
+Projeto: O aluno irá apresentar um projeto ao final do curso. 
+Linguagem: Python 
+Recursos: 
+ - https://github.com/DynaTools/Dynamo.py/tree/main/Processing
+ - https://abav.lugaralgum.com/material-aulas/Processing-Python/
+ - https://py.processing.org/reference/
+
+### Programação do Módulo 01 
+#### Aula 1: Introdução ao Processing.py
+- Conceitos básicos de programação visual
+- Instalando Processing.py
+- Primeiro programa em Processing.py
+- Exercício: Criação de um script simples que desenha um círculo na tela
+
+#### Aula 2: Variáveis e Tipos de Dados
+- Tipos de dados primitivos em Python
+- Declaração e uso de variáveis em Processing.py
+- Operações básicas com variáveis
+- Exercício: Criação de um script que desenha diferentes formas geométricas utilizando variáveis
+
+#### Aula 3: Estruturas de Controle
+- Condicionais (if, else, elif)
+- Laços de repetição (for, while)
+- Uso de estruturas de controle para manipular desenhos
+- Exercício: Criação de um script que desenha uma série de formas geométricas condicionais e repetitivas
+
+#### Aula 4: Funções
+- Definição e uso de funções
+- Funções integradas no Processing.py
+- Criando funções personalizadas
+- Exercício: Criação de um script que usa funções para modularizar o desenho de formas complexas
+
+#### Aula 5: Listas e Estruturas de Dados
+- Introdução às listas em Python
+- Manipulação de listas para criar padrões visuais
+- Exercício: Criação de um script que desenha uma série de formas utilizando listas para definir posições e tamanhos
+
+#### Aula 6: Introdução à Orientação a Objetos
+- Conceitos básicos de orientação a objetos (OO)
+- Criação de classes e objetos em Python
+- Exercício: Criação de uma classe simples para desenhar formas geométricas
+
+#### Aula 7: Definindo Métodos e Atributos
+- Métodos e atributos em classes
+- Diferença entre métodos de instância e métodos de classe
+- Exercício: Expansão da classe de formas geométricas para incluir métodos de desenho
+
+#### Aula 8: Herança e Polimorfismo
+- Conceitos de herança em OO
+- Criação de subclasses
+- Uso de polimorfismo para métodos
+- Exercício: Criação de uma hierarquia de classes para diferentes formas geométricas
+
+#### Aula 9: Interatividade com Objetos
+- Entrada de dados pelo usuário para manipular objetos
+- Uso do mouse e teclado para interação com objetos
+- Exercício: Criação de um script interativo que responde aos movimentos do mouse manipulando objetos
+
+#### Aula 10: Animação de Objetos
+- Conceitos de animação em Processing.py aplicados a objetos
+- Uso de laços e variáveis para criar animações de objetos
+- Exercício: Criação de uma animação que movimenta objetos na tela
+
+#### Aula 11: Gerenciamento de Múltiplos Objetos
+- Criação e gerenciamento de múltiplos objetos em uma cena
+- Uso de listas para armazenar e manipular objetos
+- Exercício: Criação de uma cena com múltiplos objetos interagindo
+
+#### Aula 12: Projeto Final - Parte 1
+- Discussão e planejamento do projeto final
+- Início da implementação do projeto com orientação a objetos
+- Exercício: Desenvolvimento inicial do projeto
+
+#### Aula 13: Projeto Final - Parte 2
+- Continuação da implementação do projeto
+- Aplicação de conceitos aprendidos (interatividade, animação, etc.)
+- Exercício: Desenvolvimento intermediário do projeto
+
+#### Aula 14: Projeto Final - Parte 3
+- Finalização do projeto
+- Testes e ajustes finais
+- Exercício: Conclusão do projeto e preparação para a apresentação
+
+#### Aula 15: Apresentação dos Projetos
+- Apresentação dos projetos pelos alunos
+- Feedback e discussão sobre os projetos apresentados
+
+## Módulo 02 - Orientação a objetos com Revit API e Python
+Duração: 30 horas
+Objetivo: Apresentar orientação a objetos com o API do Revit dentro do ambiente Dynamo. 
+Projeto: Aluno escolhe um problema para ser resolvido e com o apoio da turma e do curso, apresenta a solução ao final do mesmo. 
+Linguagem: Design script, python. 
+Recursos: 
+- https://github.com/DynaTools/Dynamo.py/tree/main/RevitAPI/Collection
+- https://github.com/DynaTools/Dynamo.py/tree/main/Library
+- https://dynamopythonprimer.gitbook.io/dynamo-python-primer
+
+### Programação do Módulo 02
+#### Aula 1: Introdução à API do Revit e Dynamo
+- Conceitos básicos da API do Revit e do ambiente Dynamo
+- Configuração do ambiente de desenvolvimento
+- Exercício: Primeiro script simples utilizando a API do Revit
+
+#### Aula 2: Variáveis e Tipos de Dados em Python
+- Tipos de dados primitivos em Python
+- Declaração e uso de variáveis no contexto da API do Revit
+- Operações básicas com variáveis
+- Exercício: Script que manipula diferentes tipos de dados dentro do Dynamo
+
+#### Aula 3: Estruturas de Controle
+- Condicionais (if, else, elif)
+- Laços de repetição (for, while)
+- Uso de estruturas de controle em scripts da API do Revit
+- Exercício: Script que usa estruturas de controle para manipular elementos do Revit
+
+#### Aula 4: Funções e Métodos
+- Definição e uso de funções e métodos
+- Funções integradas e personalizadas na API do Revit
+- Exercício: Criação de funções para modularizar scripts da API do Revit
+
+#### Aula 5: Introdução à Orientação a Objetos
+- Conceitos básicos de orientação a objetos (OO)
+- Criação de classes e objetos em Python
+- Exercício: Criação de uma classe simples para representar elementos do Revit
+
+#### Aula 6: Atributos e Métodos
+- Atributos e métodos em classes
+- Diferença entre métodos de instância e métodos de classe
+- Exercício: Expansão da classe de elementos do Revit para incluir métodos específicos
+
+#### Aula 7: Herança e Polimorfismo
+- Conceitos de herança em OO
+- Criação de subclasses
+- Uso de polimorfismo para métodos
+- Exercício: Criação de uma hierarquia de classes para diferentes tipos de elementos do Revit
+
+#### Aula 8: Manipulação de Elementos do Revit com Objetos
+- Criação e manipulação de objetos que representam elementos do Revit
+- Exercício: Script que cria e manipula múltiplos objetos representando diferentes tipos de elementos do Revit
+
+#### Aula 9: Interatividade e Entrada de Dados
+- Entrada de dados pelo usuário para manipular objetos do Revit
+- Exercício: Criação de um script interativo que permite ao usuário selecionar e modificar elementos do Revit
+
+#### Aula 10: Animação e Visualização de Dados
+- Conceitos de animação aplicados a elementos do Revit
+- Uso de laços e variáveis para criar animações simples
+- Exercício: Criação de um script que anima a visualização de dados no Revit
+
+#### Aula 11: Gerenciamento de Múltiplos Objetos e Dados
+- Criação e gerenciamento de múltiplos objetos e dados no Revit
+- Uso de listas e dicionários para armazenar e manipular dados
+- Exercício: Script que gerencia e manipula uma grande quantidade de dados do Revit
+
+#### Aula 12: Projeto Final - Parte 1
+- Discussão e planejamento do projeto final
+- Início da implementação do projeto com orientação a objetos
+- Exercício: Desenvolvimento inicial do projeto
+
+#### Aula 13: Projeto Final - Parte 2
+- Continuação da implementação do projeto
+- Aplicação de conceitos aprendidos (interatividade, animação, etc.)
+- Exercício: Desenvolvimento intermediário do projeto
+
+#### Aula 14: Projeto Final - Parte 3
+- Finalização do projeto
+- Testes e ajustes finais
+- Exercício: Conclusão do projeto e preparação para a apresentação
+
+#### Aula 15: Apresentação dos Projetos
+- Apresentação dos projetos pelos alunos
+- Feedback e discussão sobre os projetos apresentados
+
+
+
+
+
+
+
+
+
+
+
