@@ -1,97 +1,12 @@
+# Comprehensive Guide to Revit API Selection Methods
 
-# Create TaskDialog
+## Introduction
 
-This option involves first creating the TaskDialog using its constructor, setting its properties individually and then using the `Show()` method to display it. This approach will allow access to more settings. For this reason, in cases where you want to interact with the user, it will be the most recommendable option.
+The Revit API offers a robust set of tools for selecting and interacting with elements in a Revit model. This expanded guide delves deeper into various selection methods, providing numerous examples and detailed explanations to help you master element selection in your Revit API scripts.
 
-Here is an example of how to perform this task.
+## Required Libraries and Setup
 
-First, the instance of the `TaskDialog` class is constructed, defining the title, header and body of the pop-up window.
-
-```python
-dialog = TaskDialog("Title")
-dialog.MainInstruction = "Header"
-dialog.MainContent = "Body"
-```
-
-## Buttons
-
-Once the base structure of the window is created, the buttons can be created through the `CommonButtons` property. You can add as many as the values defined in the enumerated `TaskDialogCommonButtons`. It simply has to be separated with the "|" symbol.
-
-Possible Buttons:
-
-- `TaskDialogCommonButtons.Ok`
-- `TaskDialogCommonButtons.Yes`
-- `TaskDialogCommonButtons.No`
-- `TaskDialogCommonButtons.Cancel`
-- `TaskDialogCommonButtons.Retry`
-- `TaskDialogCommonButtons.Close`
-
-The following is an example of how to create the "Yes" and "No" buttons:
-
-```python
-dialog.CommonButtons = TaskDialogCommonButtons.Yes | TaskDialogCommonButtons.No
-```
-
-It is also possible to add a selectable field of type Yes/No. The `VerificationText` property shall be used for this purpose.
-
-```python
-dialog.VerificationText = "Yes/No"
-```
-
-Alternatively, to the `VerificationText` you can create an `ExtraCheckBoxText` which has identical behavior. Only one of them can be created, but never at the same time.
-
-```python
-dialog.ExtraCheckBoxText = "Another selection"
-```
-
-## Progress Bar
-
-The `EnableMarqueeProgressBar` property will allow a progress bar to be displayed while all the options available in the pop-up window are configured.
-
-```python
-dialog.EnableMarqueeProgressBar = True
-```
-
-A progress bar is a window that an application can use to indicate the progress of a long operation. It consists of a rectangle that shows a progress bar that animates as an operation progresses. The animation continues until the TaskDialog is closed.
-
-
-
-# The PickObjects() Method
-
-The PickObjects() method shall allow multiple objects to be selected at once.
-
-- **Element**: The entire element.
-- **Edge**: Any model edge.
-- **Face**: Any face.
-- **LinkedElement**: Elements in linked RVT files.
-- **Subelement**: The whole element or sub-element.
-- **PointOnElement**: Any point on an element (on a face or curve).
-
-Here are some simple examples of how to implement this method:
-
-```python
-elem = uidoc.Selection.PickObject(ObjectType.Element, "Select an element")
-face = uidoc.Selection.PickObject(ObjectType.Face, "Select a face")
-edge = uidoc.Selection.PickObject(ObjectType.Edge, "Select an edge")
-link = uidoc.Selection.PickObject(ObjectType.LinkedElement, "Select a linked element")
-point = uidoc.Selection.PickObject(ObjectType.PointOnElement, "Select a point")
-
-elems = uidoc.Selection.PickObjects(ObjectType.Element, "Select elements")
-faces = uidoc.Selection.PickObjects(ObjectType.Face, "Select faces")
-edges = uidoc.Selection.PickObjects(ObjectType.Edge, "Select edges")
-links = uidoc.Selection.PickObjects(ObjectType.LinkedElement, "Select linked elements")
-points = uidoc.Selection.PickObjects(ObjectType.PointOnElement, "Select points")
-```
-
-
-
-# User Interface Selection Request
-
-From the API it is possible to activate Revit’s selection mode, forcing the user to select the elements with which he/she wishes to work. It is also possible to condition this choice to a specific type of element or filter those that may have been selected by mistake.
-
-Within the API structure there is a namespace called UI.Selection that is exclusively dedicated to this task, specifically, the Selection() class that is detailed in this section.
-
-To guarantee the correct functioning of the code, the following libraries must be imported.
+Before we begin, let's ensure we have all the necessary libraries imported and set up our document references:
 
 ```python
 import clr
@@ -99,138 +14,310 @@ clr.AddReference('RevitAPIUI')
 import Autodesk
 from Autodesk.Revit.UI import *
 from Autodesk.Revit.UI.Selection import *
-```
 
-
-
-
-# Select elements by rectangle
-
-This method asks the user to select several elements by drawing a rectangle.
-
-```python
-uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
-selection = uidoc.Selection.PickElementsByRectangle()
-```
-
-Users will be able to manipulate the Revit view (zoom, frame and rotate the view), but will not be allowed to click on other elements of the user interface. They will not be able to change the active view, close the active document or the Revit application in the selection session, otherwise an exception will be thrown.
-
-
-
-## Select filtered elements
-
-This method will also allow the creation of an object of type user interface for filtering the selected elements. These interfaces cannot be instantiated, so it will be mandatory to create an object directly inheriting its methods and properties.
-
-This will open the possibility of keeping the desired objects regardless of the set of elements that have been selected. Here is an instance where only the walls of a selected set of elements will be selected.
-
-
-
-# Selected Views
-
-The Selection class will also allow obtaining the views selected in the project browser. The `GetElementIds()` method is used to perform this task. In the following example, this process will be packed into a function.
-
-```python
-actuiapp = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
-
-def ActualSelection():
-    def output(x):
-        if len(x) == 1: return x[0]
-        else: return x
-
-    selectID = actuiapp.Selection.GetElementIds()
-    return output([doc.GetElement(id).ToDSType(True) for id in selectID])
-```
-
-## Select Points
-
-The `PickPoint()` method may be used to select a specific snap point of any object in the model. The enumerated `ObjectSnapTypes` value shall be used to identify the type of snap point and shall allow selection from the following possibilities:
-
-- **None**: It is not attached to anything.
-- **EndPoints**: The end point of an element or component.
-- **MidPoints**: Midpoint of an element or component.
-- **Nearest**: Closest element or component.
-- **WorkPlaneGrid**: Work plane grid.
-- **Intersections**: Intersections.
-- **Centers**: Centre of an arc.
-- **Perpendicular**: Perpendicular elements or components.
-- **Tangents**: Tangent to an arc.
-- **Quadrants**: Points of the quadrant.
-- **Points**: Site points.
-
-In case the `ObjectSnapType` is not specified, any point in the model can be selected.
-
-Here is an example of how to implement this selection method.
-
-```python
-uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
-point = uidoc.Selection.PickPoint(ObjectSnapTypes.EndPoints, "End Point")
-OUT = point
-```
-
-## Application Views
-
-The `UIView` class represents all the views of the model that are open within Revit. To collect them, you can use the `GetOpenUIViews()` method.
-
-
-
-# Selection Filter
-
-```python
-class Filter(ISelectionFilter):
-    def __init__(self):
-        pass
-    
-    def AllowElement(self, element):
-        bip = element.get_Parameter(BuiltInParameter.ALL_MODEL_MARK)
-        if bip.AsString() == "select":
-            return True
-        else:
-            return False
-    
-    def AllowReference(self, element):
-        return False
-
-elems = uidoc.Selection.PickObjects(ObjectType.Element, Filter(), "Select elements")
-OUT = [doc.GetElement(x.ElementId) for x in elems]
-```
-
-Note: These lines of code will only select items that meet the filtering characteristics set in the `SelectionFilter`.
-
-
-## Select elements
-
-To invoke the different methods of the Selection() class, the User Interface application of the active document must first be obtained. All selections are made against it.
-
-```python
 clr.AddReference('RevitServices')
 import RevitServices
 from RevitServices.Persistence import DocumentManager
+
+# Get the current document and UI document
 doc = DocumentManager.Instance.CurrentDBDocument
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 ```
 
-Below are the different selection methods.
+This setup provides access to the Revit API, the current document, and the user interface, which are essential for performing selections.
 
-- **Pick a box**
+## 1. Basic Element Selection
 
-The PickBox method executes a rectangle based on two clicks. It allows to delimit an area on the screen.
+### 1.1 Pick a Single Element
 
-The type of the box is determined by the enumerated PickBoxStyle value which allows to choose between the following values.
-
-- **Crossing**: Used when selecting objects wholly or partially within the frame
-- **Enclosing**: Used when selecting objects that are completely enclosed by the frame
-- **Directional**: The frame style depends on the direction in which the frame is drawn. Use the Crossing style when drawing from right to left, or the Enclosing style when drawing in the opposite direction
+The `PickObject()` method is the foundation of element selection in Revit API. It prompts the user to select a single element in the Revit interface.
 
 Example:
 
 ```python
-box = uidoc.Selection.PickBox(PickBoxStyle.Crossing, "Points to define the floor")
+try:
+    selected_reference = uidoc.Selection.PickObject(ObjectType.Element, "Select an element")
+    element = doc.GetElement(selected_reference.ElementId)
+    print(f"Selected element: {element.Name}")
+    print(f"Category: {element.Category.Name}")
+    print(f"ID: {element.Id}")
+    
+    # Get some basic parameters
+    for param in element.Parameters:
+        print(f"{param.Definition.Name}: {param.AsValueString()}")
+except Exception as e:
+    print(f"Selection cancelled or failed: {str(e)}")
 ```
 
-This will return a PickedBox reference that can be used for a variety of purposes.
+This example not only selects an element but also retrieves and prints various properties and parameters of the selected element.
 
----
+Exercise: Modify the code to allow selection of a specific category (e.g., only walls). Hint: You'll need to use a custom `ISelectionFilter`.
 
-This is the same selection method used in AutoCAD.
+### 1.2 Pick Multiple Elements
 
+When you need to select multiple elements, the `PickObjects()` method comes in handy.
+
+Example:
+
+```python
+try:
+    selected_references = uidoc.Selection.PickObjects(ObjectType.Element, "Select multiple elements")
+    elements = [doc.GetElement(ref.ElementId) for ref in selected_references]
+    
+    category_count = {}
+    for elem in elements:
+        category = elem.Category.Name
+        category_count[category] = category_count.get(category, 0) + 1
+    
+    print(f"Selected {len(elements)} elements")
+    for category, count in category_count.items():
+        print(f"{category}: {count}")
+except Exception as e:
+    print(f"Selection cancelled or failed: {str(e)}")
+```
+
+This example selects multiple elements and provides a summary of the selected elements by category.
+
+Exercise: Extend the code to calculate and print the total volume of all selected elements that have a volume parameter.
+
+## 2. Advanced Selection Techniques
+
+### 2.1 Selection by Rectangle
+
+The `PickElementsByRectangle()` method allows for a more visual selection process, similar to dragging a selection box in the Revit interface.
+
+Example:
+
+```python
+try:
+    selected_elements = uidoc.Selection.PickElementsByRectangle("Select elements by rectangle")
+    
+    levels = {}
+    for elem_id in selected_elements:
+        elem = doc.GetElement(elem_id)
+        if hasattr(elem, 'Level'):
+            level_name = elem.Level.Name if elem.Level else "No Level"
+            levels[level_name] = levels.get(level_name, 0) + 1
+    
+    print(f"Selected {len(selected_elements)} elements")
+    for level, count in levels.items():
+        print(f"Level {level}: {count} elements")
+except Exception as e:
+    print(f"Selection cancelled or failed: {str(e)}")
+```
+
+This example selects elements within a rectangle and organizes them by level, providing a count of elements on each level.
+
+Exercise: Modify the code to filter the selected elements, keeping only those with a specific parameter value (e.g., comments containing a certain keyword).
+
+### 2.2 Pick Box
+
+The `PickBox()` method creates a selection box based on two points, which can be useful for defining a 3D region for selection or other operations.
+
+Example:
+
+```python
+from Autodesk.Revit.DB import BoundingBoxIntersectsFilter, Outline
+
+try:
+    box = uidoc.Selection.PickBox(PickBoxStyle.Enclosing, "Select area")
+    outline = Outline(box.Min, box.Max)
+    bb_filter = BoundingBoxIntersectsFilter(outline)
+    
+    collector = FilteredElementCollector(doc).WherePasses(bb_filter)
+    elements = list(collector)
+    
+    print(f"Found {len(elements)} elements within the picked box")
+    category_count = {}
+    for elem in elements:
+        category = elem.Category.Name if elem.Category else "No Category"
+        category_count[category] = category_count.get(category, 0) + 1
+    
+    for category, count in category_count.items():
+        print(f"{category}: {count}")
+except Exception as e:
+    print(f"Selection cancelled or failed: {str(e)}")
+```
+
+This example uses the picked box to create a bounding box filter, then finds all elements that intersect with this box. It provides a summary of the elements found, categorized by their Revit category.
+
+Exercise: Extend the code to calculate the total surface area of all walls within the picked box.
+
+## 3. Filtered Selection
+
+### 3.1 Custom Selection Filter
+
+Custom selection filters allow for fine-grained control over which elements can be selected.
+
+Example:
+
+```python
+class CustomFilter(ISelectionFilter):
+    def __init__(self, category_name, parameter_name, parameter_value):
+        self.category_name = category_name
+        self.parameter_name = parameter_name
+        self.parameter_value = parameter_value
+    
+    def AllowElement(self, elem):
+        if elem.Category and elem.Category.Name == self.category_name:
+            parameter = elem.LookupParameter(self.parameter_name)
+            if parameter and parameter.AsString() == self.parameter_value:
+                return True
+        return False
+    
+    def AllowReference(self, reference, point):
+        return False
+
+try:
+    custom_filter = CustomFilter("Walls", "Comments", "Important")
+    selected_elements = uidoc.Selection.PickObjects(ObjectType.Element, custom_filter, "Select important walls")
+    
+    print(f"Selected {len(selected_elements)} important walls")
+    for ref in selected_elements:
+        elem = doc.GetElement(ref.ElementId)
+        print(f"Wall ID: {elem.Id}, Name: {elem.Name}")
+except Exception as e:
+    print(f"Selection cancelled or failed: {str(e)}")
+```
+
+This example creates a custom filter that only allows selection of walls with a specific comment. It demonstrates how to combine category filtering with parameter value checking.
+
+Exercise: Create a filter that allows selection of either doors or windows, but only if they are hosted by a wall that has a fire rating parameter.
+
+## 4. Working with Selected Views
+
+Retrieving and working with selected views in the project browser can be very useful for batch operations or reporting.
+
+Example:
+
+```python
+def get_selected_views():
+    selected_ids = uidoc.Selection.GetElementIds()
+    selected_views = [doc.GetElement(id) for id in selected_ids if doc.GetElement(id).GetType().Name.startswith("View")]
+    return selected_views
+
+selected_views = get_selected_views()
+print(f"Selected {len(selected_views)} views")
+
+for view in selected_views:
+    print(f"View Name: {view.Name}, Type: {view.ViewType}")
+    
+    # Count visible elements in each view
+    collector = FilteredElementCollector(doc, view.Id).WhereElementIsNotElementType()
+    element_count = collector.GetElementCount()
+    print(f"  Visible elements: {element_count}")
+    
+    # Check view-specific properties
+    if hasattr(view, 'Scale'):
+        print(f"  Scale: 1:{view.Scale}")
+    if hasattr(view, 'ViewRange'):
+        top_level = view.GetViewRange().GetLevelId(PlanViewPlane.TopClipPlane)
+        top_level_name = doc.GetElement(top_level).Name if top_level != ElementId.InvalidElementId else "Not Set"
+        print(f"  Top Clip Plane: {top_level_name}")
+```
+
+This example retrieves all selected views, regardless of their type, and provides detailed information about each view, including the number of visible elements and view-specific properties.
+
+Exercise: Extend the function to create a dictionary where the keys are view types and the values are lists of view names of that type. Print a summary of how many views of each type are selected.
+
+## 5. Point Selection
+
+Point selection is crucial for many operations, such as creating new elements or measuring distances.
+
+Example:
+
+```python
+from Autodesk.Revit.DB import XYZ
+
+def pick_points(prompt, count):
+    points = []
+    for i in range(count):
+        try:
+            point = uidoc.Selection.PickPoint(ObjectSnapTypes.Endpoints, f"{prompt} (Point {i+1}/{count})")
+            points.append(point)
+        except Exception as e:
+            print(f"Point selection cancelled or failed: {str(e)}")
+            return None
+    return points
+
+def distance_between_points(p1, p2):
+    return p1.DistanceTo(p2)
+
+points = pick_points("Select two points to measure distance", 2)
+if points and len(points) == 2:
+    distance = distance_between_points(points[0], points[1])
+    print(f"Distance between points: {distance:.2f} feet")
+    
+    # Create a line element between the two points
+    try:
+        line = Line.CreateBound(points[0], points[1])
+        doc.Create.NewDetailCurve(doc.ActiveView, line)
+        print("Created a detail line between the points")
+    except Exception as e:
+        print(f"Failed to create detail line: {str(e)}")
+```
+
+This example demonstrates how to pick multiple points, calculate the distance between them, and even create a detail line in the active view based on the selected points.
+
+Exercise: Modify the code to pick three points and calculate the area of the triangle formed by these points.
+
+## 6. User Interaction with TaskDialog
+
+Creating interactive dialogs enhances the user experience and allows for more complex decision-making in your scripts.
+
+Example:
+
+```python
+def create_task_dialog(title, main_instruction, content, commands, verification_text=None):
+    dialog = TaskDialog(title)
+    dialog.MainInstruction = main_instruction
+    dialog.MainContent = content
+    
+    for command in commands:
+        dialog.AddCommandLink(command[0], command[1])
+    
+    if verification_text:
+        dialog.VerificationText = verification_text
+    
+    return dialog
+
+# Usage example
+commands = [
+    (TaskDialogCommandLinkId.CommandLink1, "Option 1: Do something"),
+    (TaskDialogCommandLinkId.CommandLink2, "Option 2: Do something else"),
+    (TaskDialogCommandLinkId.CommandLink3, "Option 3: Cancel operation")
+]
+
+dialog = create_task_dialog(
+    "Important Decision",
+    "Please choose an option",
+    "Your choice will affect the following operations.",
+    commands,
+    "Remember my choice"
+)
+
+result = dialog.Show()
+
+if result == TaskDialogResult.CommandLink1:
+    print("User selected Option 1")
+elif result == TaskDialogResult.CommandLink2:
+    print("User selected Option 2")
+elif result == TaskDialogResult.CommandLink3:
+    print("User cancelled the operation")
+
+if dialog.WasVerificationChecked():
+    print("User wants to remember this choice")
+```
+
+This example creates a more complex TaskDialog with multiple command links and a verification checkbox. It demonstrates how to create reusable dialog functions and handle various user responses.
+
+Exercise: Create a TaskDialog that asks the user to choose a category of elements to select (e.g., Walls, Doors, Windows). Based on the user's choice, use the appropriate selection method to select elements of that category and display a count of selected elements.
+
+## Conclusion
+
+This expanded guide covers a wide range of Revit API selection methods, from basic element picking to advanced filtered selections and user interactions. The additional examples and exercises provide a deeper understanding of how these methods can be applied in real-world scenarios. 
+
+Remember, the key to mastering Revit API selection is practice and experimentation. Try combining different methods, create your own custom filters, and always consider the user experience when designing your scripts.
+
+As you become more comfortable with these selection techniques, you'll be able to create more sophisticated and efficient Revit add-ins and scripts, enhancing your productivity and capabilities in Revit development.
 
