@@ -1,375 +1,368 @@
-# Curso Modelagem Paramétrica com Python e Revit
+# Parametric Modeling Course with Python and Revit
 
-## INTRODUÇÃO
+## INTRODUCTION
 
-Modelagem da Informação da Construção (em inglês, Building Information Modeling - BIM) está cada vez mais presente e trouxe grandes mudanças na arquitetura, engenharia e construção (AEC), pois trata-se de uma representação tridimensional fiel de uma edificação
+Building Information Modeling (BIM) is increasingly present and has brought significant changes to architecture, engineering, and construction (AEC), as it represents a faithful three-dimensional representation of a building.
 
-Quando completo, o modelo gerado computacionalmente contém a geometria precisa e os dados relevantes, necessários para dar suporte à construção, à fabricação e ao fornecimento de insumos necessários para a realização da construção (EASTMAN et al., 2018, tradução nossa).
+When complete, the computationally generated model contains precise geometry and relevant data necessary to support construction, manufacturing, and supply of materials needed for construction (EASTMAN et al., 2018, our translation).
 
-Os modelos BIM são desenvolvidos através de plataformas conhecidas como paramétricas, baseadas em objetos. Possuem um tipo de inteligência ou comportamento de projeto (em inglês, design behavior) (EASTMAN et al., 2018). Por exemplo, ao modelar um elemento parede, a mesma estará automaticamente identificada na lista de quantidades e nos cortes associados. Outra característica paramétrica está na inserção dos elementos, uma porta só poderá ser inserida em um elemento parede, e este, por sua vez, terá a área de material imediatamente removida dos metadados.
+BIM models are developed through platforms known as parametric, object-based systems. They possess a type of intelligence or design behavior (EASTMAN et al., 2018). For example, when modeling a wall element, it will be automatically identified in the quantity list and associated sections. Another parametric characteristic is in the insertion of elements: a door can only be inserted in a wall element, which in turn will have its material area immediately removed from the metadata.
 
-Este tipo de inteligência paramétrica está ausente em programas de modelagem CAD. Estes necessitam que o projetista identifique o elemento, preenchendo a propriedade associada. No exemplo citado anteriormente, a porta poderá ser inserida em qualquer ponto do modelo CAD sem que isso gere qualquer identificação de erro, assim como cortes precisarão ser atualizados quando ocorrerem mudanças na planta baixa.
+This type of parametric intelligence is absent in CAD modeling programs. These require the designer to identify the element by filling in the associated property. In the example cited above, the door can be inserted at any point in the CAD model without generating any error identification, just as sections will need to be updated when changes occur in the floor plan.
 
-Os limites e usabilidades de programas CAD e BIM podem variar em um projeto e os benefícios devem ser avaliados pela equipe envolvida. Apesar das disponibilidades de diversas ferramentas CAD e BIM, o projetista poderá ser confrontado, eventualmente, com uma necessidade de buscar o apoio da programação como solução de expansão de funcionalidade dos softwares. A programação visual ou visual programming language (VPL) é o nome que se dá para qualquer tipo de linguagem de programação possível de se manipular em um formato gráfico. Uma das características positivas desta forma de programar é o retorno visual instantâneo do resultado ao projetista, sem a necessidade de compilar códigos complexos com domínio dos conceitos de programação e criação de algoritmos.
+The limits and usability of CAD and BIM programs can vary in a project, and the benefits should be evaluated by the involved team. Despite the availability of various CAD and BIM tools, the designer may eventually be confronted with a need to seek programming support as a solution for expanding software functionality. Visual programming or visual programming language (VPL) is the name given to any type of programming language that can be manipulated in a graphical format. One of the positive characteristics of this way of programming is the instant visual feedback of the result to the designer, without the need to compile complex codes with mastery of programming concepts and algorithm creation.
 
-Pesquisas indicam que o uso da VPL apresenta benefícios ao projetista em relação à programação textual, em especial àqueles que necessitam de mais feedbacks visuais de seu processo. A VPL melhora a capacidade de enxergar opções de parametrização dentro de projetos. Esta forma de pensar é classificada como pensamento paramétrico. O projetista, ao desenvolver este raciocínio, começa de forma abstrata a conceber conexões entre elementos do projeto que pode ser traduzido em algoritmos.
+Research indicates that the use of VPL presents benefits to the designer in relation to textual programming, especially for those who need more visual feedback from their process. VPL improves the ability to see parametrization options within projects. This way of thinking is classified as parametric thinking. The designer, when developing this reasoning, begins abstractly to conceive connections between project elements that can be translated into algorithms.
 
-Algoritmos são o conjunto de regras, operações e procedimentos definidos, ordenados e usados na solução de um problema em um número finito de etapas. Portanto, a ordem e organização de informações são cruciais para que o projetista produza bons resultados. É importante que o projetista tenha conhecimento sobre os tipos e classificações das ferramentas que utiliza no projeto, pois pode tomar decisões mais informadas sobre quando utilizar um determinado software, tecnologia ou linguagem de programação durante o desenvolvimento do projeto.
+Algorithms are the set of defined, ordered rules, operations, and procedures used in solving a problem in a finite number of steps. Therefore, the order and organization of information are crucial for the designer to produce good results. It is important that the designer has knowledge about the types and classifications of the tools they use in the project, as they can make more informed decisions about when to use a particular software, technology, or programming language during project development.
 
-## PROBLEMA DE PESQUISA E METODOLOGIA
+## RESEARCH PROBLEM AND METHODOLOGY
 
-Os cursos existentes que se propõem a ensinar o uso das interfaces de programação visual como Grasshopper e Dynamo são excelentes meios de introduzir o projetista nas ferramentas de design paramétrico. Encontramos diversos cursos rápidos destas ferramentas disponíveis nas plataformas Linkedin Learning e Udemy, por exemplo. Esses cursos possuem conteúdos que ensinam o projetista a utilizar a interface dos programas de linguagem visual. Observamos que o conteúdo é direcionado a ensinar através de exemplos práticos que complementam funcionalidades que não estão presentes nos programas BIM por padrão.
+Existing courses that aim to teach the use of visual programming interfaces like Grasshopper and Dynamo are excellent means of introducing the designer to parametric design tools. We find several quick courses on these tools available on platforms like LinkedIn Learning and Udemy, for example. These courses have content that teaches the designer to use the program interfaces. We observe that the content is directed at teaching through practical examples that complement functionalities that are not present in BIM programs by default.
 
-Como ilustra a figura abaixo, os cursos têm focado em ensinar os alunos a sintaxe da linguagem, ou seja, as regras que determinam quais combinações de nós geram funções úteis, como os construtores operam com os tipos de dados, quais são os símbolos e pontuações aceitas para declarar variáveis e listas de dados, etc. Desta maneira, os cursos têm se configurado como um conjunto de rotinas prontas que podem ser ensinadas para que os alunos comecem a entender o funcionamento da interface através destes exemplos.
+As the figure below illustrates, courses have focused on teaching students the syntax of the language, that is, the rules that determine which combinations of nodes generate useful functions, how constructors operate with data types, which symbols and punctuations are accepted to declare variables and data lists, etc. In this way, courses have been configured as a set of ready-made routines that can be taught so that students begin to understand the interface's functioning through these examples.
 
-De maneira prática, isto torna o conteúdo do curso objetivo e funcional. Entretanto, deixar o aluno focado na ferramenta ou no aprendizado da interface, não garante que entenda um arcabouço teórico-prático que fornece autonomia para que pense nos fluxos de projeto.
+In a practical way, this makes the course content objective and functional. However, keeping the student focused on the tool or learning the interface does not guarantee that they understand a theoretical-practical framework that provides autonomy to think about project flows.
 
-### Figura 01 - Curso do Linkedin Learning - Dynamo Essential Training
+### Figure 01 - LinkedIn Learning Course - Dynamo Essential Training
 
 ![image](https://github.com/user-attachments/assets/a906a0ce-2eae-4cda-8d2f-45f0fbda94d8)
 
-O curso pode ser rico em exemplos, mas sem uma estrutura lógica, o aluno fica restrito às possibilidades que foram apresentadas em aula. Aprender sobre a estrutura das linguagens de programação para além de uma linguagem específica como Dynamo ou Grasshopper pode ajudar o projetista a entender qual pode ser a melhor estratégia de projeto computacional para resolver um determinado problema. Isso também garante que o conhecimento aprendido no percurso possa ser reaproveitado a longo prazo, pois VPLs específicas podem mudar ou se tornar obsoletas.
+The course can be rich in examples, but without a logical structure, the student is restricted to the possibilities that were presented in class. Learning about the structure of programming languages beyond a specific language like Dynamo or Grasshopper can help the designer understand what the best computational design strategy might be to solve a particular problem. This also ensures that the knowledge learned along the way can be reused in the long term, as specific VPLs may change or become obsolete.
 
-Se o aluno conhecer os conceitos que estruturam VPLs em um contexto mais ampliado e em diálogo com as linguagens de programação textual, ele estará melhor preparado para estas mudanças e adaptações (LEITÃO, 2013). Além disso, existem algumas diferenças fundamentais nas necessidades que um projetista mais focado em BIM precisa alcançar nos fluxos de trabalho baseados nesta tecnologia:
+If the student knows the concepts that structure VPLs in a broader context and in dialogue with textual programming languages, they will be better prepared for these changes and adaptations (LEITÃO, 2013). Furthermore, there are some fundamental differences in the needs that a designer more focused on BIM needs to achieve in workflows based on this technology:
 
-- Em BIM, não é frequente o uso da VPL Dynamo para testar concepção formal de projetos, sejam formas complexas, simples ou orgânicas. Esta fase de investigação formal é geralmente feita em outros programas tridimensionais ou usando a VPL Grasshopper, que possuem funções mais adaptadas para esta fase de projeto, e são posteriormente conectadas para fluxos BIM.
-- Ferramentas BIM já possuem um nível de parametria incorporado por padrão. Eastman et al. (2018) chama este comportamento inteligente de design behavior:
+- In BIM, it is not frequent to use the VPL Dynamo to test formal project conception, whether complex, simple, or organic forms. This phase of formal investigation is usually done in other three-dimensional programs or using the VPL Grasshopper, which have functions more adapted for this project phase, and are later connected to BIM workflows.
+- BIM tools already have a level of parametrics incorporated by default. Eastman et al. (2018) call this intelligent behavior design behavior:
 
-> A gama de regras que podem ser incorporadas em um gráfico paramétrico determina a generalidade do sistema. As famílias de objetos paramétricos são definidas usando parâmetros e as relações entre os parâmetros. Uma vez que as relações restringem o comportamento do projeto de um modelo paramétrico, a modelagem paramétrica também é conhecida como modelagem de restrição (EASTMAN et al., 2018, p.39).
+> The range of rules that can be incorporated into a parametric graph determines the generality of the system. Parametric object families are defined using parameters and the relationships between parameters. Since relationships constrain the design behavior of a parametric model, parametric modeling is also known as constraint modeling (EASTMAN et al., 2018, p.39).
 
-Isso ilustra que programadores de VPL BIM não precisam criar códigos que restrinjam as relações entre os objetos ou componentes de um modelo, como geralmente é feito por usuários de Grasshopper num primeiro momento, uma vez que o sistema BIM já traz essa solução incorporada.
+This illustrates that BIM VPL programmers do not need to create codes that restrict the relationships between objects or components of a model, as is usually done by Grasshopper users at first, since the BIM system already brings this solution incorporated.
 
-## TAXONOMIA DOS MODELOS PARAMÉTRICOS
+## TAXONOMY OF PARAMETRIC MODELS
 
-Quando um curso de ciência da computação é bem delineado e desenvolvido, qualquer pessoa pode aprender a programar. Partindo desse princípio, buscamos estruturar o curso utilizando a taxonomia proposta por Patrick Janssen e Rudi Stouffs, formando assim a primeira bibliografia que sugerimos aos alunos de Programação Visual Paramétrica (VPL) no início de seus estudos. Atualmente, existem muitos softwares de Modelagem de Informação da Construção (BIM) no mercado e, às vezes, chamá-los apenas de programa BIM, programa paramétrico ou programa de modelagem paramétrica pode não ser suficiente se quisermos compará-los e classificá-los adequadamente.
+When a computer science course is well-designed and developed, anyone can learn to program. Starting from this principle, we seek to structure the course using the taxonomy proposed by Patrick Janssen and Rudi Stouffs, thus forming the first bibliography we suggest to Visual Parametric Programming (VPL) students at the beginning of their studies. Currently, there are many Building Information Modeling (BIM) software in the market and, sometimes, calling them just BIM program, parametric program, or parametric modeling program may not be sufficient if we want to compare and classify them properly.
 
-Em Types of Parametric Modelling, os autores definem um Modelo Geral Paramétrico (em inglês, General Parametric Model (GPM)) como a primeira estrutura de classificação.
+In Types of Parametric Modelling, the authors define a General Parametric Model (GPM) as the first classification structure.
 
-O GPM é descrito utilizando um conceito matemático comum na ciência da computação, o grafo acíclico dirigido ou directed acyclic graph (DAG). Um DAG é um grafo que contém arcos direcionados sem qualquer ciclo, ou seja, não é possível retornar a um nó uma vez que ele já foi visitado (DIRECTED, 2021). Isso significa que não é possível percorrer o mesmo caminho múltiplas vezes, evitando assim recursão de dados.
+The GPM is described using a common mathematical concept in computer science, the directed acyclic graph or directed acyclic graph (DAG). A DAG is a graph that contains directed arcs without any cycle, that is, it is not possible to return to a node once it has already been visited (DIRECTED, 2021). This means it is not possible to traverse the same path multiple times, thus avoiding data recursion.
 
-### Figura 02 - Grafo Acíclico Dirigido
+### Figure 02 - Directed Acyclic Graph
 
-![Grafo Acíclico Dirigido](https://github.com/user-attachments/assets/2b17f4e8-ab94-4962-9aac-dcfadbd9a743)
-**Fonte**: Extraído de Wikipédia¹
+![Directed Acyclic Graph](https://github.com/user-attachments/assets/2b17f4e8-ab94-4962-9aac-dcfadbd9a743)
+**Source**: Extracted from Wikipedia¹
 
-Considerando que arquitetos, engenheiros e projetistas geralmente não possuem formação formal em programação, mas estão sendo introduzidos a ela através das linguagens de programação visual (VPL), o conceito de iteração de dados pode se tornar muito abstrato e dificultar o engajamento do aluno com o conteúdo.
+Considering that architects, engineers, and designers generally do not have formal training in programming but are being introduced to it through visual programming languages (VPL), the concept of data iteration can become very abstract and hinder student engagement with the content.
 
-Os autores classificam as VPLs (que, por sua vez, são descritas como Grafos Acíclicos Dirigidos) pela maneira como iteram dados. Os tipos de iteração de dados são:
+The authors classify VPLs (which, in turn, are described as Directed Acyclic Graphs) by the way they iterate data. The types of data iteration are:
 
-1. **Iteração simples**: O processo de repetição ocorre de forma direta e linear.
-2. **Iteração múltipla implícita**: A repetição acontece dentro de estruturas de dados como listas aninhadas, de forma não explicitamente definida pelo usuário.
-3. **Iteração múltipla explícita**: A repetição é definida de maneira clara e detalhada pelo usuário, permitindo maior controle sobre o processo iterativo.
+1. **Single iteration**: The repetition process occurs directly and linearly.
+2. **Implicit multiple iteration**: Repetition happens within data structures like nested lists, in a way not explicitly defined by the user.
+3. **Explicit multiple iteration**: Repetition is defined clearly and in detail by the user, allowing greater control over the iterative process.
 
-Esses tipos de iteração formam a base para a taxonomia de modelos paramétricos descritos a seguir:
+These types of iteration form the basis for the taxonomy of parametric models described below:
 
-1. **Modelagem de Objetos**: Programas que não permitem nenhum tipo de iteração, como os programas CAD tradicionais.
-2. **Modelagem de Associação**: Programas que permitem uma única rodada de iterações, como o Autodesk Revit, onde uma alteração em um componente pode refletir em outros componentes associados.
-3. **Modelagem de Fluxo de Dados**: Programas que permitem iteração implícita através do uso de listas aninhadas, como o Grasshopper para Rhino3D e o Generative Components da Bentley.
-4. **Modelagem com base em Procedimentos**: Programas que permitem iteração explícita, onde o usuário define claramente como a repetição ocorrerá, como o Dynamo BIM.
+1. **Object Modeling**: Programs that do not allow any type of iteration, such as traditional CAD programs.
+2. **Association Modeling**: Programs that allow a single round of iterations, such as Autodesk Revit, where a change in one component can reflect in other associated components.
+3. **Data Flow Modeling**: Programs that allow implicit iteration through the use of nested lists, such as Grasshopper for Rhino3D and Bentley's Generative Components.
+4. **Procedure-Based Modeling**: Programs that allow explicit iteration, where the user clearly defines how repetition will occur, such as Dynamo BIM.
 
-Esses tipos de iteração, e os tipos de modelagem que eles suportam, são fundamentais para entendermos a estrutura das VPLs utilizadas na área, bem como os tipos de modelagem suportados por programas considerados paramétricos. A seguir, vamos nos concentrar nas especificidades dos fluxos paramétricos BIM, explorando como esses conceitos são aplicados na prática e quais são suas implicações para o desenvolvimento de projetos na construção civil.
+These types of iteration, and the types of modeling they support, are fundamental to understanding the structure of VPLs used in the area, as well as the types of modeling supported by programs considered parametric. Next, we will focus on the specifics of BIM parametric flows, exploring how these concepts are applied in practice and what their implications are for project development in civil construction.
 
-### Exemplos de Softwares de Modelagem e suas Aplicações
+### Examples of Modeling Software and Their Applications
 
-Para melhor entender como diferentes tipos de softwares se encaixam nos conceitos de modelagem e iteração, aqui está uma explicação de alguns dos principais programas utilizados na indústria de arquitetura, engenharia e design.
+To better understand how different types of software fit into the concepts of modeling and iteration, here is an explanation of some of the main programs used in the architecture, engineering, and design industry.
 
-- **Revit**: O Autodesk Revit é um software de Modelagem de Informação da Construção (BIM). Ele permite a criação de modelos 3D inteligentes que incluem dados importantes sobre os componentes de construção. O Revit é um exemplo de software de Modelagem de Associação, onde uma modificação em um componente pode automaticamente atualizar outros componentes associados. Isso facilita a coordenação entre diferentes disciplinas (arquitetura, estrutura e MEP - mecânica, elétrica e hidráulica).
+- **Revit**: Autodesk Revit is Building Information Modeling (BIM) software. It allows the creation of intelligent 3D models that include important data about construction components. Revit is an example of Association Modeling software, where a modification in one component can automatically update other associated components. This facilitates coordination between different disciplines (architecture, structure, and MEP - mechanical, electrical, and plumbing).
 
-- **Grasshopper**: Grasshopper é um plugin para Rhino3D que permite a modelagem paramétrica. Ele é usado para criar algoritmos que geram geometrias complexas. Grasshopper exemplifica a Modelagem de Fluxo de Dados, onde iterações implícitas ocorrem através de listas e estruturas de dados aninhadas, permitindo a manipulação e a geração de formas complexas de maneira visual.
+- **Grasshopper**: Grasshopper is a plugin for Rhino3D that allows parametric modeling. It is used to create algorithms that generate complex geometries. Grasshopper exemplifies Data Flow Modeling, where implicit iterations occur through lists and nested data structures, allowing the manipulation and generation of complex forms in a visual way.
 
-- **Dynamo**: Dynamo é um software de programação visual que se integra com o Revit, permitindo a criação de scripts para automatizar tarefas e criar geometrias paramétricas complexas. Dynamo exemplifica a Modelagem com base em Procedimentos, onde o usuário define explicitamente como a iteração e a manipulação de dados ocorrerão.
+- **Dynamo**: Dynamo is visual programming software that integrates with Revit, allowing the creation of scripts to automate tasks and create complex parametric geometries. Dynamo exemplifies Procedure-Based Modeling, where the user explicitly defines how iteration and data manipulation will occur.
 
-- **Rhinoceros (Rhino)**: Rhinoceros, ou Rhino, é um software de modelagem 3D baseado em NURBS (Non-Uniform Rational B-Splines), usado principalmente para criar superfícies e geometrias complexas. Embora Rhino em si seja mais focado na modelagem de objetos, quando combinado com Grasshopper, ele permite a modelagem paramétrica avançada.
+- **Rhinoceros (Rhino)**: Rhinoceros, or Rhino, is 3D modeling software based on NURBS (Non-Uniform Rational B-Splines), used primarily to create complex surfaces and geometries. Although Rhino itself is more focused on object modeling, when combined with Grasshopper, it allows advanced parametric modeling.
 
-- **AutoCAD**: AutoCAD é um software de desenho assistido por computador (CAD) usado para criar desenhos técnicos e plantas. Ele exemplifica a Modelagem de Objetos, pois é utilizado principalmente para criar geometrias estáticas sem iterações ou parametrizações complexas.
+- **AutoCAD**: AutoCAD is computer-aided design (CAD) software used to create technical drawings and plans. It exemplifies Object Modeling, as it is used primarily to create static geometries without complex iterations or parametrizations.
 
-- **Inventor**: Autodesk Inventor é um software de modelagem CAD 3D utilizado principalmente para design mecânico. Ele permite a criação de peças, montagens e simulações. O Inventor pode ser classificado como Modelagem de Associação, pois permite que alterações em um componente reflitam nas montagens e desenhos associados.
+- **Inventor**: Autodesk Inventor is 3D CAD modeling software used primarily for mechanical design. It allows the creation of parts, assemblies, and simulations. Inventor can be classified as Association Modeling, as it allows changes in one component to reflect in associated assemblies and drawings.
 
-- **SolidWorks**: SolidWorks é um software de CAD 3D utilizado para design de produtos, engenharia mecânica e simulações. Similar ao Inventor, ele suporta Modelagem de Associação com capacidades avançadas de simulação e análise.
+- **SolidWorks**: SolidWorks is 3D CAD software used for product design, mechanical engineering, and simulations. Similar to Inventor, it supports Association Modeling with advanced simulation and analysis capabilities.
 
-- **ArchiCAD**: ArchiCAD é um software de BIM desenvolvido pela Graphisoft. Ele é usado principalmente para modelagem arquitetônica, permitindo a criação de modelos detalhados de edifícios. ArchiCAD também se enquadra na Modelagem de Associação, onde mudanças em um elemento do modelo podem afetar outros elementos relacionados.
+- **ArchiCAD**: ArchiCAD is BIM software developed by Graphisoft. It is used primarily for architectural modeling, allowing the creation of detailed building models. ArchiCAD also falls under Association Modeling, where changes in one model element can affect other related elements.
 
-- **Blender**: Blender é um software de modelagem 3D open-source que é amplamente utilizado em animação, efeitos visuais, arte 3D e design de jogos. Embora seja mais conhecido por suas capacidades artísticas e de animação, Blender também suporta Modelagem de Objetos e pode ser estendido para modelagem paramétrica através de scripts e plugins.
+- **Blender**: Blender is open-source 3D modeling software that is widely used in animation, visual effects, 3D art, and game design. Although it is better known for its artistic and animation capabilities, Blender also supports Object Modeling and can be extended for parametric modeling through scripts and plugins.
 
-### Resumo
+### Summary
 
-A classificação dos softwares acima em termos de seus métodos de iteração e tipos de modelagem ajuda a entender suas capacidades e aplicações específicas:
+The classification of the above software in terms of their iteration methods and modeling types helps understand their capabilities and specific applications:
 
-- **Modelagem de Objetos**: AutoCAD, Blender (com foco em geometria estática).
-- **Modelagem de Associação**: Revit, Inventor, SolidWorks, ArchiCAD.
-- **Modelagem de Fluxo de Dados**: Grasshopper (para Rhino3D).
-- **Modelagem com base em Procedimentos**: Dynamo (para Revit).
+- **Object Modeling**: AutoCAD, Blender (with focus on static geometry).
+- **Association Modeling**: Revit, Inventor, SolidWorks, ArchiCAD.
+- **Data Flow Modeling**: Grasshopper (for Rhino3D).
+- **Procedure-Based Modeling**: Dynamo (for Revit).
 
-Compreender esses conceitos e como eles se aplicam a diferentes softwares é crucial para escolher a ferramenta certa para cada tipo de projeto e para desenvolver fluxos de trabalho eficientes na indústria de AEC (Arquitetura, Engenharia e Construção).
+Understanding these concepts and how they apply to different software is crucial for choosing the right tool for each type of project and for developing efficient workflows in the AEC (Architecture, Engineering, and Construction) industry.
 
-## Integração de Python, Revit e Dynamo: Potencializando o Design Paramétrico
+## Integration of Python, Revit, and Dynamo: Enhancing Parametric Design
 
-A combinação de Python, Revit e Dynamo oferece um poderoso conjunto de ferramentas para a modelagem paramétrica e automação de tarefas na arquitetura, engenharia e construção (AEC). Vamos explorar como cada componente contribui para essa integração e quais são os benefícios dessa abordagem.
+The combination of Python, Revit, and Dynamo offers a powerful set of tools for parametric modeling and task automation in architecture, engineering, and construction (AEC). Let's explore how each component contributes to this integration and what the benefits of this approach are.
 
 ### Revit
 
-O Autodesk Revit é um software de Modelagem de Informação da Construção (BIM) que permite a criação de modelos 3D detalhados com informações ricas sobre os componentes da construção. Ele é amplamente utilizado para o design arquitetônico, estrutural e de sistemas MEP (mecânica, elétrica e hidráulica). O Revit suporta a Modelagem de Associação, onde uma alteração em um componente pode refletir automaticamente em componentes relacionados, facilitando a coordenação entre diferentes disciplinas.
+Autodesk Revit is Building Information Modeling (BIM) software that allows the creation of detailed 3D models with rich information about construction components. It is widely used for architectural, structural, and MEP (mechanical, electrical, and plumbing) system design. Revit supports Association Modeling, where a change in one component can automatically reflect in related components, facilitating coordination between different disciplines.
 
 ### Dynamo
 
-Dynamo é um ambiente de programação visual que se integra perfeitamente com o Revit. Ele permite aos usuários criar scripts visuais para automatizar tarefas repetitivas, gerar geometrias complexas e manipular dados de forma avançada. Dynamo é uma ferramenta de Modelagem com base em Procedimentos, onde o usuário define explicitamente os processos de iteração e manipulação de dados.
+Dynamo is a visual programming environment that integrates seamlessly with Revit. It allows users to create visual scripts to automate repetitive tasks, generate complex geometries, and manipulate data in advanced ways. Dynamo is a Procedure-Based Modeling tool, where the user explicitly defines the processes of iteration and data manipulation.
 
 ### Python
 
-Python é uma linguagem de programação de alto nível conhecida por sua simplicidade e versatilidade. Ele é amplamente utilizado em diversos campos, incluindo a automação de tarefas, análise de dados e desenvolvimento de scripts para softwares como Revit e Dynamo. A integração de Python com Dynamo expande significativamente as capacidades do Dynamo, permitindo a criação de scripts mais complexos e personalizados.
+Python is a high-level programming language known for its simplicity and versatility. It is widely used in various fields, including task automation, data analysis, and script development for software like Revit and Dynamo. The integration of Python with Dynamo significantly expands Dynamo's capabilities, allowing the creation of more complex and customized scripts.
 
-### Integração Prática
+### Practical Integration
 
-A integração de Python, Revit e Dynamo pode ser visualizada como uma combinação de suas forças individuais, permitindo fluxos de trabalho mais eficientes e complexos. Aqui estão alguns exemplos de como essa integração pode ser utilizada:
+The integration of Python, Revit, and Dynamo can be visualized as a combination of their individual strengths, allowing more efficient and complex workflows. Here are some examples of how this integration can be used:
 
-#### Automação de Tarefas Repetitivas
+#### Automation of Repetitive Tasks
 
-- **Revit**: Configuração inicial e gerenciamento de modelos BIM.
-- **Dynamo**: Criação de scripts visuais para automatizar tarefas repetitivas, como a criação de elementos padrão em um projeto.
-- **Python**: Uso de scripts para automatizar processos ainda mais complexos, como a importação e manipulação de grandes volumes de dados externos.
+- **Revit**: Initial setup and management of BIM models.
+- **Dynamo**: Creation of visual scripts to automate repetitive tasks, such as creating standard elements in a project.
+- **Python**: Use of scripts to automate even more complex processes, such as importing and manipulating large volumes of external data.
 
-#### Criação de Geometrias Complexas
+#### Creation of Complex Geometries
 
-- **Revit**: Visualização e documentação das geometrias criadas.
-- **Dynamo**: Geração de formas paramétricas complexas através de nós visuais.
-- **Python**: Programação de algoritmos avançados para gerar e manipular geometrias que seriam difíceis de implementar apenas com Dynamo.
+- **Revit**: Visualization and documentation of created geometries.
+- **Dynamo**: Generation of complex parametric forms through visual nodes.
+- **Python**: Programming of advanced algorithms to generate and manipulate geometries that would be difficult to implement with Dynamo alone.
 
-#### Análise e Otimização de Projetos
+#### Project Analysis and Optimization
 
-- **Revit**: Repositório central para informações do projeto e visualização de resultados de análises.
-- **Dynamo**: Scripts para executar análises básicas de desempenho e otimização.
-- **Python**: Implementação de algoritmos de análise complexos, como otimização de energia, análise estrutural avançada e simulações de fluxo de trabalho.
+- **Revit**: Central repository for project information and visualization of analysis results.
+- **Dynamo**: Scripts to execute basic performance analyses and optimization.
+- **Python**: Implementation of complex analysis algorithms, such as energy optimization, advanced structural analysis, and workflow simulations.
 
-#### Interoperabilidade e Manipulação de Dados
+#### Interoperability and Data Manipulation
 
-- **Revit**: Plataforma BIM que centraliza todos os dados do projeto.
-- **Dynamo**: Interação com os dados do Revit para manipulação e análise.
-- **Python**: Utilização de bibliotecas externas (como pandas e numpy) para análise e manipulação avançada de dados, importação e exportação de dados entre diferentes formatos e integração com outras plataformas e serviços.
+- **Revit**: BIM platform that centralizes all project data.
+- **Dynamo**: Interaction with Revit data for manipulation and analysis.
+- **Python**: Use of external libraries (such as pandas and numpy) for advanced data analysis and manipulation, import and export of data between different formats, and integration with other platforms and services.
 
-### Benefícios da Integração
+### Benefits of Integration
 
-- **Eficiência e Produtividade**: Automatização de tarefas repetitivas e complexas, reduzindo o tempo necessário para completar projetos.
-- **Precisão e Consistência**: Redução de erros humanos através da automatização de processos e validação de dados.
-- **Flexibilidade e Customização**: Criação de soluções personalizadas que atendem às necessidades específicas de cada projeto.
-- **Inovação**: Capacidade de explorar novas formas de design e análise que seriam difíceis ou impossíveis de realizar com ferramentas tradicionais.
+- **Efficiency and Productivity**: Automation of repetitive and complex tasks, reducing the time needed to complete projects.
+- **Precision and Consistency**: Reduction of human errors through process automation and data validation.
+- **Flexibility and Customization**: Creation of customized solutions that meet the specific needs of each project.
+- **Innovation**: Ability to explore new forms of design and analysis that would be difficult or impossible to perform with traditional tools.
 
-### Exemplo Prático
+### Practical Example
 
-Imagine que você está trabalhando em um projeto de grande escala que requer a colocação de milhares de luminárias em um edifício. Manualmente, isso seria extremamente demorado e sujeito a erros. Com a integração de Python, Revit e Dynamo, você pode:
+Imagine you are working on a large-scale project that requires the placement of thousands of luminaires in a building. Manually, this would be extremely time-consuming and prone to errors. With the integration of Python, Revit, and Dynamo, you can:
 
-1. Criar um script em Dynamo para gerar os pontos de inserção das luminárias com base em regras paramétricas (distância entre luminárias, alturas variáveis, etc.).
-2. Usar Python dentro do Dynamo para ler um arquivo CSV contendo informações específicas sobre cada luminária (tipo, potência, etc.) e aplicar esses dados ao modelo.
-3. Atualizar automaticamente o modelo no Revit, inserindo todas as luminárias nos locais corretos com as informações apropriadas.
+1. Create a script in Dynamo to generate luminaire insertion points based on parametric rules (distance between luminaires, variable heights, etc.).
+2. Use Python within Dynamo to read a CSV file containing specific information about each luminaire (type, power, etc.) and apply this data to the model.
+3. Automatically update the model in Revit, inserting all luminaires in the correct locations with the appropriate information.
 
-Este fluxo de trabalho não só economiza tempo, mas também garante que todas as luminárias sejam colocadas de acordo com as especificações do projeto, melhorando a qualidade e a eficiência do processo de design.
+This workflow not only saves time but also ensures that all luminaires are placed according to project specifications, improving the quality and efficiency of the design process.
 
-A combinação de Python, Revit e Dynamo oferece um poderoso conjunto de ferramentas para qualquer profissional de AEC, permitindo a automação avançada, a criação de geometrias complexas e a análise profunda de projetos, tudo isso com uma flexibilidade e customização incomparáveis.
+The combination of Python, Revit, and Dynamo offers a powerful set of tools for any AEC professional, allowing advanced automation, creation of complex geometries, and deep project analysis, all with unparalleled flexibility and customization.
 
-# Grade do Curso Modelagem Paramétrica com Python e Revit
+## Parametric Modeling Course Curriculum with Python and Revit
 
-O curso "Modelagem Paramétrica com Python e Revit" é uma jornada abrangente que integra ferramentas de programação visual, textual e de modelagem, incluindo Dynamo e Revit. Com início na programação em Python utilizando Processing.py, os alunos aprendem conceitos fundamentais de programação, manipulação de variáveis, estruturas de controle e orientação a objetos em um ambiente visual intuitivo. Em seguida, o curso avança para a aplicação prática desses conceitos no ambiente Dynamo com a API do Revit, permitindo aos alunos desenvolver scripts complexos para automação e modelagem paramétrica. O curso é projetado para fornecer uma base sólida em programação e modelagem paramétrica, culminando em projetos finais que demonstram a aplicação prática dos conhecimentos adquiridos.
+The "Parametric Modeling with Python and Revit" course is a comprehensive journey that integrates visual and textual programming tools and modeling, including Dynamo and Revit. Starting with Python programming using Processing.py, students learn fundamental programming concepts, variable manipulation, control structures, and object orientation in an intuitive visual environment. Next, the course advances to the practical application of these concepts in the Dynamo environment with the Revit API, allowing students to develop complex scripts for automation and parametric modeling. The course is designed to provide a solid foundation in programming and parametric modeling, culminating in final projects that demonstrate the practical application of acquired knowledge.
 
-## Módulo 01 - Introdução à Programação Visual com Processing.py
-**Duração:** 15 horas  
-**Objetivo:** Introduzir conceitos de programação, variáveis, listas e orientação a objetos.  
-**Projeto:** Os alunos apresentarão um projeto ao final do curso.  
-**Linguagem:** Python  
-**Recursos:** 
+## Module 01 - Introduction to Visual Programming with Processing.py
+
+**Duration:** 15 hours  
+**Objective:** Introduce programming concepts, variables, lists, and object orientation.  
+**Project:** Students will present a project at the end of the course.  
+**Language:** Python  
+**Resources:** 
 - [GitHub - Processing](https://github.com/DynaTools/Dynamo.py/tree/main/Processing)
-- [Material de Aulas - Processing Python](https://abav.lugaralgum.com/material-aulas/Processing-Python/)
-- [Referência - Processing Python](https://py.processing.org/reference/)
+- [Class Materials - Processing Python](https://abav.lugaralgum.com/material-aulas/Processing-Python/)
+- [Reference - Processing Python](https://py.processing.org/reference/)
 
-### Estrutura do Módulo 01
-#### Aula 1: Primeiros Passos com Processing.py
-- Noções básicas de programação visual
-- Instalação do Processing.py
-- Primeiro programa em Processing.py
-- **Exercício:** Script simples que desenha um círculo na tela
-- **Exemplo:**
+### Module 01 Structure
+
+#### Lesson 1: First Steps with Processing.py
+- Basic notions of visual programming
+- Installing Processing.py
+- First program in Processing.py
+- **Exercise:** Simple script that draws a circle on the screen
+- **Example:**
 ```python
 def setup():
-    size(800, 600)  # Tamanho da janela
-    background(255)  # Cor de fundo branca
+    size(800, 600)  # Window size
+    background(255)  # White background color
 
 def draw():
-    # Desenhar um círculo no centro da tela
-    fill(150, 0, 150)  # Cor de preenchimento roxa
-    ellipse(width / 2, height / 2, 100, 100)  # Círculo com diâmetro 100
+    # Draw a circle in the center of the screen
+    fill(150, 0, 150)  # Purple fill color
+    ellipse(width / 2, height / 2, 100, 100)  # Circle with diameter 100
 ```
-#### Aula 2: Variáveis e Tipos de Dados
-- Tipos de dados em Python
-- Declaração e uso de variáveis no Processing.py
-- Operações básicas com variáveis
-- **Exercício:** Desenhar formas geométricas utilizando variáveis
-- 
 
-#### Aula 3: Estruturas de Controle
-- Condicionais (if, else, elif)
-- Laços de repetição (for, while)
-- Utilização de estruturas de controle para manipular desenhos
-- **Exercício:** Desenhar formas geométricas condicionais e repetitivas
+#### Lesson 2: Variables and Data Types
+- Data types in Python
+- Declaration and use of variables in Processing.py
+- Basic operations with variables
+- **Exercise:** Draw geometric shapes using variables
 
-#### Aula 4: Funções
-- Definição e uso de funções
-- Funções integradas no Processing.py
-- Criação de funções personalizadas
-- **Exercício:** Uso de funções para modularizar o desenho de formas complexas
+#### Lesson 3: Control Structures
+- Conditionals (if, else, elif)
+- Loops (for, while)
+- Using control structures to manipulate drawings
+- **Exercise:** Draw conditional and repetitive geometric shapes
 
-#### Aula 5: Listas e Estruturas de Dados
-- Introdução às listas em Python
-- Manipulação de listas para criar padrões visuais
-- **Exercício:** Desenhar uma série de formas utilizando listas para definir posições e tamanhos
+#### Lesson 4: Functions
+- Definition and use of functions
+- Built-in functions in Processing.py
+- Creating custom functions
+- **Exercise:** Using functions to modularize the drawing of complex shapes
 
-#### Aula 6: Introdução à Orientação a Objetos
-- Conceitos básicos de orientação a objetos (OO)
-- Criação de classes e objetos em Python
-- **Exercício:** Criação de uma classe simples para desenhar formas geométricas
+#### Lesson 5: Lists and Data Structures
+- Introduction to lists in Python
+- Manipulating lists to create visual patterns
+- **Exercise:** Draw a series of shapes using lists to define positions and sizes
 
-#### Aula 7: Métodos e Atributos
-- Métodos e atributos em classes
-- Diferença entre métodos de instância e métodos de classe
-- **Exercício:** Expansão da classe de formas geométricas para incluir métodos de desenho
+#### Lesson 6: Introduction to Object Orientation
+- Basic concepts of object orientation (OO)
+- Creating classes and objects in Python
+- **Exercise:** Creating a simple class to draw geometric shapes
 
-#### Aula 8: Herança e Polimorfismo
-- Conceitos de herança em OO
-- Criação de subclasses
-- Uso de polimorfismo para métodos
-- **Exercício:** Criação de uma hierarquia de classes para diferentes formas geométricas
+#### Lesson 7: Methods and Attributes
+- Methods and attributes in classes
+- Difference between instance methods and class methods
+- **Exercise:** Expanding the geometric shapes class to include drawing methods
 
-#### Aula 9: Interatividade com Objetos
-- Entrada de dados pelo usuário para manipular objetos
-- Uso do mouse e teclado para interação com objetos
-- **Exercício:** Script interativo que responde aos movimentos do mouse
+#### Lesson 8: Inheritance and Polymorphism
+- Concepts of inheritance in OO
+- Creating subclasses
+- Using polymorphism for methods
+- **Exercise:** Creating a class hierarchy for different geometric shapes
 
-#### Aula 10: Animação de Objetos
-- Conceitos de animação em Processing.py aplicados a objetos
-- Uso de laços e variáveis para criar animações de objetos
-- **Exercício:** Animação de formas geométricas
+#### Lesson 9: Interactivity with Objects
+- User input to manipulate objects
+- Using mouse and keyboard for interaction with objects
+- **Exercise:** Interactive script that responds to mouse movements
 
-#### Aula 11: Gerenciamento de Múltiplos Objetos
-- Criação e gerenciamento de múltiplos objetos em uma cena
-- Uso de listas para armazenar e manipular objetos
-- **Exercício:** Criação de uma cena com múltiplos objetos interagindo
+#### Lesson 10: Object Animation
+- Animation concepts in Processing.py applied to objects
+- Using loops and variables to create object animations
+- **Exercise:** Animation of geometric shapes
 
-#### Aula 12: Projeto Final - Parte 1
-- Discussão e planejamento do projeto final
-- Início da implementação do projeto com orientação a objetos
-- **Exercício:** Desenvolvimento inicial do projeto
+#### Lesson 11: Managing Multiple Objects
+- Creating and managing multiple objects in a scene
+- Using lists to store and manipulate objects
+- **Exercise:** Creating a scene with multiple interacting objects
 
-#### Aula 13: Projeto Final - Parte 2
-- Continuação da implementação do projeto
-- Aplicação de conceitos aprendidos (interatividade, animação, etc.)
-- **Exercício:** Desenvolvimento intermediário do projeto
+#### Lesson 12: Final Project - Part 1
+- Discussion and planning of the final project
+- Beginning implementation of the project with object orientation
+- **Exercise:** Initial project development
 
-#### Aula 14: Projeto Final - Parte 3
-- Finalização do projeto
-- Testes e ajustes finais
-- **Exercício:** Conclusão do projeto e preparação para a apresentação
+#### Lesson 13: Final Project - Part 2
+- Continuation of project implementation
+- Application of learned concepts (interactivity, animation, etc.)
+- **Exercise:** Intermediate project development
 
-#### Aula 15: Apresentação dos Projetos
-- Apresentação dos projetos pelos alunos
-- Feedback e discussão sobre os projetos apresentados
+#### Lesson 14: Final Project - Part 3
+- Project finalization
+- Final tests and adjustments
+- **Exercise:** Project completion and preparation for presentation
 
-## Módulo 02 - Orientação a Objetos com Revit API e Python
-**Duração:** 30 horas  
-**Objetivo:** Ensinar orientação a objetos com a API do Revit dentro do ambiente Dynamo.  
-**Projeto:** O aluno escolhe um problema para ser resolvido e, com o apoio da turma e do curso, apresenta a solução ao final.  
-**Linguagem:** Design Script, Python  
-**Recursos:** 
+#### Lesson 15: Project Presentations
+- Student project presentations
+- Feedback and discussion about presented projects
+
+## Module 02 - Object Orientation with Revit API and Python
+
+**Duration:** 30 hours  
+**Objective:** Teach object orientation with the Revit API within the Dynamo environment.  
+**Project:** The student chooses a problem to be solved and, with the support of the class and course, presents the solution at the end.  
+**Language:** Design Script, Python  
+**Resources:** 
 - [GitHub - Revit API Collection](https://github.com/DynaTools/Dynamo.py/tree/main/RevitAPI/Collection)
 - [GitHub - Library](https://github.com/DynaTools/Dynamo.py/tree/main/Library)
 - [Dynamo Python Primer](https://dynamopythonprimer.gitbook.io/dynamo-python-primer)
 
-### Estrutura do Módulo 02
+### Module 02 Structure
 
-#### Aula 1: Introdução ao Python no Dynamo
-- Configuração do ambiente de desenvolvimento
-- Primeiros passos com scripts em Python no Dynamo
-- **Exercício:** Script simples utilizando Python no Dynamo
+#### Lesson 1: Introduction to Python in Dynamo
+- Development environment setup
+- First steps with Python scripts in Dynamo
+- **Exercise:** Simple script using Python in Dynamo
 
-#### Aula 2: Compreendendo o Dynamo
-- Visão geral do Dynamo e sua integração com o Revit
-- Conceitos de geometria e dados no Dynamo
-- **Exercício:** Criação de um script que gera geometria básica no Dynamo
+#### Lesson 2: Understanding Dynamo
+- Overview of Dynamo and its integration with Revit
+- Geometry and data concepts in Dynamo
+- **Exercise:** Creating a script that generates basic geometry in Dynamo
 
-#### Aula 3: Iniciando com a API do Revit
-- Primeiros passos com a API do Revit
-- Configuração inicial e comandos básicos
-- **Exercício:** Script para manipular elementos do Revit
+#### Lesson 3: Getting Started with the Revit API
+- First steps with the Revit API
+- Initial setup and basic commands
+- **Exercise:** Script to manipulate Revit elements
 
-#### Aula 4: Tópicos Específicos do Revit
-##### 4.1 Introdução à API do Revit
-- Conceitos básicos e estrutura da API
-- **Exercício:** Acesso a informações básicas de um documento Revit
+#### Lesson 4: Specific Revit Topics
 
-##### 4.2 Como Ler a Documentação da API do Revit
-- Navegação e interpretação da documentação da API
-- **Exercício:** Pesquisa na documentação para resolver um problema específico
+##### 4.1 Introduction to the Revit API
+- Basic concepts and API structure
+- **Exercise:** Accessing basic information from a Revit document
+
+##### 4.2 How to Read the Revit API Documentation
+- Navigation and interpretation of API documentation
+- **Exercise:** Search in documentation to solve a specific problem
 
 ##### 4.3 Doc, UIDoc, App, UIApp
-- Diferenças e usos de Doc, UIDoc, App e UIApp
-- **Exercício:** Uso desses objetos para acessar e modificar dados no Revit
+- Differences and uses of Doc, UIDoc, App, and UIApp
+- **Exercise:** Using these objects to access and modify data in Revit
 
-##### 4.4 Desembrulhando Elementos do Revit
-- Conceito de unwrapping no Dynamo
-- **Exercício:** Desembrulhar elementos e modificar suas propriedades
+##### 4.4 Unwrapping Revit Elements
+- Concept of unwrapping in Dynamo
+- **Exercise:** Unwrap elements and modify their properties
 
-##### 4.5 O FilteredElementCollector
-- Seleção de elementos no Revit usando FilteredElementCollector
-- **Exercício:** Script que seleciona e manipula um conjunto específico de elementos
+##### 4.5 The FilteredElementCollector
+- Selecting elements in Revit using FilteredElementCollector
+- **Exercise:** Script that selects and manipulates a specific set of elements
 
-##### 4.6 Métodos de Conversão de Geometria
-- Conversão de geometria entre Dynamo e Revit
-- **Exercício:** Converter geometria do Dynamo para elementos do Revit
+##### 4.6 Geometry Conversion Methods
+- Converting geometry between Dynamo and Revit
+- **Exercise:** Convert Dynamo geometry to Revit elements
 
-##### 4.7 Trabalhando com Parâmetros
-- Tipos de parâmetros no Revit e como acessá-los
-- **Exercício:** Modificação de parâmetros de elementos selecionados
+##### 4.7 Working with Parameters
+- Types of parameters in Revit and how to access them
+- **Exercise:** Modifying parameters of selected elements
 
-##### 4.8 Trabalhando com Transações
-- Conceito de transações no Revit
-- **Exercício:** Script que realiza múltiplas operações dentro de uma transação
+##### 4.8 Working with Transactions
+- Concept of transactions in Revit
+- **Exercise:** Script that performs multiple operations within a transaction
 
-##### 4.9 Abrindo e Fechando Arquivos Externos
-- Manipulação de arquivos externos via API
-- **Exercício:** Abrir, modificar e salvar arquivos Revit
+##### 4.9 Opening and Closing External Files
+- Manipulating external files via API
+- **Exercise:** Open, modify, and save Revit files
 
-##### 4.10 Seleção via Interface de Usuário
-- Criação de interfaces para seleção de elementos
-- **Exercício:** Script que cria uma interface para seleção de elementos no Revit
+##### 4.10 Selection via User Interface
+- Creating interfaces for element selection
+- **Exercise:** Script that creates an interface for selecting elements in Revit
 
-##### 4.11 Trabalhando com Unidades
-- Manipulação e conversão de unidades no Revit
-- **Exercício:** Ajustar unidades de elementos para um padrão específico
+##### 4.11 Working with Units
+- Manipulating and converting units in Revit
+- **Exercise:** Adjust element units to a specific standard
 
-##### 4.12 Categorias Integradas
-- Uso de categorias integradas no Revit
-- **Exercício:** Seleção e modificação de elementos por categoria
+##### 4.12 Built-in Categories
+- Using built-in categories in Revit
+- **Exercise:** Selection and modification of elements by category
 
-##### 4.13 Manipulação de Famílias
-- Criação e modificação de famílias no Revit
-- **Exercício:** Script que cria e modifica famílias paramétricas
+##### 4.13 Family Manipulation
+- Creating and modifying families in Revit
+- **Exercise:** Script that creates and modifies parametric families
 
-##### 4.14 Diálogos de Tarefas para Feedback
-- Criação e uso de diálogos de tarefas para interação com o usuário
-- **Exercício:** Script que utiliza diálogos de tarefas para interagir com o usuário
+##### 4.14 Task Dialogs for Feedback
+- Creating and using task dialogs for user interaction
+- **Exercise:** Script that uses task dialogs to interact with the user
 
-#### Aula 5: Revit Dashboard 
-- Revisão de termos e conceitos chave do curso
-- Exemplo: https://revitoverview.streamlit.app/
-- **Exercício:** Criação de um dashboard com Streamlit e Python 
+#### Lesson 5: Revit Dashboard
+- Review of key terms and concepts from the course
+- Example: https://revitoverview.streamlit.app/
+- **Exercise:** Creating a dashboard with Streamlit and Python
 
-#### Aula 6: Conclusão e Próximos Passos
-- Reflexão sobre o curso e próximos passos
-- **Exercício:** Planejamento de projetos futuros utilizando Dynamo e API do Revit
-"""
-
-
-
-
-
-
-
-
-
-
+#### Lesson 6: Conclusion and Next Steps
+- Reflection on the course and next steps
+- **Exercise:** Planning future projects using Dynamo and Revit API
